@@ -1,0 +1,6 @@
+# IDE configuration file
+.vscode
+.idea
+
+# Doxer ignore files
+.env

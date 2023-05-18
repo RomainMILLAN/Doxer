@@ -17,12 +17,17 @@ public class App
     private static JDA jda;
 
     private static EnvironementState environementState = EnvironementState.PRODUCTION;
+    private static boolean debugingState = false;
 
     public static void main( String[] args ) throws InterruptedException {
         App.configuration = new Configuration();
 
+
         if(App.configuration.getConfiguration("APP_ENV").equals("DEVELOP"))
             App.environementState = EnvironementState.DEVELOPMENT;
+
+        if(App.configuration.getConfiguration("APP_DEBUGING").equals("true"))
+            App.debugingState = true;
 
 
         App.jda = JDABuilder.createDefault(App.configuration.getConfiguration("BOT_TOKEN"))
@@ -49,5 +54,9 @@ public class App
 
     public static EnvironementState getEnvironementState() {
         return environementState;
+    }
+
+    public static boolean isDebuging() {
+        return debugingState;
     }
 }

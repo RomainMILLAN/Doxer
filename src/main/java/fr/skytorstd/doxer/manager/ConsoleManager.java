@@ -25,7 +25,7 @@ public class ConsoleManager {
      */
     public void toConsole(String messageToConsole, ConsoleState consoleState){
         if(consoleState == ConsoleState.DEBUG){
-            if(App.getEnvironementState() != EnvironementState.DEVELOPMENT)
+            if(App.getEnvironementState() != EnvironementState.DEVELOPMENT || !App.isDebuging())
                 return;
         }
 

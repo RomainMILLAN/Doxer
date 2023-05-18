@@ -58,8 +58,8 @@ public class App
     }
 
 
-    public static Configuration getConfiguration() {
-        return configuration;
+    public static String getConfiguration(String configurationKey) {
+        return App.configuration.getConfiguration(configurationKey);
     }
 
     public static EnvironementState getEnvironementState() {

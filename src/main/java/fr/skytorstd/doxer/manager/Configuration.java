@@ -2,6 +2,8 @@ package fr.skytorstd.doxer.manager;
 
 import java.util.HashMap;
 
+import fr.skytorstd.doxer.states.ConsoleState;
+import fr.skytorstd.doxer.states.messages.application.SystemMessages;
 import io.github.cdimascio.dotenv.Dotenv;
 
 public class Configuration {
@@ -22,9 +24,13 @@ public class Configuration {
             .ignoreIfMissing()
             .load();
 
+        ConsoleManager.getInstance().toConsole(SystemMessages.CONFIGURATION_LOADED.getMessage(), ConsoleState.DEBUG);
+
         configurationDotenv.entries().forEach(element -> {
             this.configuration.put(element.getKey(), element.getValue());
         });
+
+        ConsoleManager.getInstance().toConsole(SystemMessages.CONFIGURATION_REGISTER.getMessage(), ConsoleState.INFO);
     }
 
     /**

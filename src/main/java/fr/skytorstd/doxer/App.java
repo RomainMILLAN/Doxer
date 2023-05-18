@@ -26,7 +26,7 @@ public class App
         if(App.configuration.getConfiguration("APP_ENV").equals("DEVELOP"))
             App.environementState = EnvironementState.DEVELOPMENT;
 
-        if(App.configuration.getConfiguration("APP_DEBUGING").equals("true"))
+        if(App.configuration.getConfiguration("APP_DEBUGING").equalsIgnoreCase("true"))
             App.debugingState = true;
 
 

@@ -24,8 +24,6 @@ public class Configuration {
             .ignoreIfMissing()
             .load();
 
-        ConsoleManager.getInstance().toConsole(SystemMessages.CONFIGURATION_LOADED.getMessage(), ConsoleState.DEBUG);
-
         configurationDotenv.entries().forEach(element -> {
             this.configuration.put(element.getKey(), element.getValue());
         });

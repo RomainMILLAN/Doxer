@@ -37,6 +37,11 @@ public class App
         App.runJdaBot();
     }
 
+    /**
+     * Run the discord bot with JDA
+     *
+     * @throws InterruptedException
+     */
     public static void runJdaBot() throws InterruptedException {
         App.jda = JDABuilder.createDefault(App.configuration.getConfiguration("BOT_TOKEN"))
                 .setIdle(true)

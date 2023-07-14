@@ -4,7 +4,8 @@ public enum SystemMessages {
     CONFIGURATION_LOADED("Configuration chargée"),
     CONFIGURATION_REGISTER("Configuration enregistrée"),
     PLUGIN_REGISTER_SUCCESS("Plugin enregistrée"),
-    INCORRECT_COMMAND("Commande incorrecte");
+    INCORRECT_COMMAND("Commande incorrecte"),
+    INCORRECT_PERMISSION("Permission incorrecte");
 
 
     private String message;

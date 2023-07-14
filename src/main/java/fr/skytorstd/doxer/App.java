@@ -1,29 +1,32 @@
 package fr.skytorstd.doxer;
 
-import fr.skytorstd.doxer.manager.Configuration;
-import fr.skytorstd.doxer.manager.ConsoleCommand;
-import fr.skytorstd.doxer.manager.ConsoleManager;
+import fr.skytorstd.doxer.commands.plugins.discordModerator;
+import fr.skytorstd.doxer.commands.helper;
+import fr.skytorstd.doxer.manager.*;
 import fr.skytorstd.doxer.objects.Plugin;
 import fr.skytorstd.doxer.states.ConsoleState;
 import fr.skytorstd.doxer.states.EnvironementState;
 import fr.skytorstd.doxer.states.messages.application.BotMessages;
+import fr.skytorstd.doxer.states.messages.application.SystemMessages;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class App 
 {
     private static Configuration configuration;
     private static JDA jda;
-    private List<Plugin> plugins = new ArrayList<Plugin>();
+    private static ArrayList<Plugin> plugins = new ArrayList<Plugin>();
 
     private static EnvironementState environementState = EnvironementState.PRODUCTION;
     private static boolean debugingState = false;
+
+    private static String guildId = "";
 
     public static void main( String[] args ) throws InterruptedException {
         App.configuration = new Configuration();
@@ -33,6 +36,8 @@ public class App
 
         if(App.configuration.getConfiguration("APP_DEBUGING").equalsIgnoreCase("true"))
             App.debugingState = true;
+
+        App.guildId = App.configuration.getConfiguration("GUILD_ID");
 
         App.runJdaBot();
     }
@@ -59,9 +64,17 @@ public class App
         App.jda.awaitReady();
         ConsoleManager.getInstance().toConsole(BotMessages.JDA_BOT_READY.getMessage(), ConsoleState.INFO);
 
+        App.updateCommands();
+
         ConsoleCommand.consoleCommand();
     }
 
+    public static void updateCommands() {
+        jda.addEventListener(new discordModerator());
+        jda.addEventListener(new helper());
+
+        jda.getGuildById(App.guildId).updateCommands().addCommands(CommandManager.updateSlashCommands()).queue();
+    }
 
     public static String getConfiguration(String configurationKey) {
         return App.configuration.getConfiguration(configurationKey);
@@ -77,5 +90,32 @@ public class App
 
     public static JDA getJda() {
         return jda;
+    }
+
+    public static void addPlugin(Plugin plugin) {
+        App.plugins.add(plugin);
+
+        ConsoleManager.getInstance().toConsole(
+                plugin.getName() + " | " +  SystemMessages.PLUGIN_REGISTER_SUCCESS.getMessage(),
+                ConsoleState.DEBUG
+        );
+    }
+
+    public static ArrayList<Plugin> getPlugins() {
+        return plugins;
+    }
+
+    public static Plugin getPluginByName(String pluginName) {
+        for (Plugin pluginToSearch : getPlugins()) {
+            if(
+                    pluginToSearch
+                            .getName()
+                            .equalsIgnoreCase(pluginName)
+            ){
+                return pluginToSearch;
+            }
+        }
+
+        return null;
     }
 }

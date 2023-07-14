@@ -1,6 +1,7 @@
 package fr.skytorstd.doxer.manager;
 
 import fr.skytorstd.doxer.App;
+import fr.skytorstd.doxer.manager.embedCrafter.SentryCrafter;
 import fr.skytorstd.doxer.states.ConsoleColors;
 import fr.skytorstd.doxer.states.ConsoleState;
 import fr.skytorstd.doxer.states.LogState;
@@ -10,7 +11,7 @@ import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 
 public class Sentry {
     private static Sentry INSTANCE = null;
-    private String fileName = "logs.txt";
+    private String fileName = "sentry.txt";
     private TextChannel sentryTextChannel = null;
 
     public Sentry() {}
@@ -19,22 +20,50 @@ public class Sentry {
         if(Sentry.INSTANCE == null)
             Sentry.INSTANCE = new Sentry();
 
-
         return INSTANCE;
     }
 
     public void toLog(String pluginName, String description, LogState logState, Member member, Guild guild){
-        this.toLogIntoTextChannel();
+        this.toLogIntoTextChannel(pluginName, description, logState, member);
         this.toLogIntoConsole(guild, pluginName, description, member);
         this.toLogIntoFile(guild, pluginName, description, member);
     }
 
-    private void toLogIntoTextChannel(){
+    public void toLog(String pluginName, String description, String command, LogState logState, Member member, Guild guild){
+        this.toLogIntoTextChannel(pluginName, description, command, logState, member);
+        this.toLogIntoConsole(guild, pluginName, description, member);
+        this.toLogIntoFile(guild, pluginName, description, member);
+    }
+
+    private void toLogIntoTextChannel(String pluginName, String description, String command, LogState logState, Member member){
         if(null == this.sentryTextChannel)
             setSentryTextChannel();
 
-        this.sentryTextChannel.sendMessage("").queue();
+        this.sentryTextChannel.sendMessageEmbeds(
+                SentryCrafter.craftSentryEmbedCommand(
+                        pluginName,
+                        description,
+                        command,
+                        logState,
+                        member
+                ).build()
+        ).queue();
     }
+
+    private void toLogIntoTextChannel(String pluginName, String description, LogState logState, Member member){
+        if(null == this.sentryTextChannel)
+            setSentryTextChannel();
+
+        this.sentryTextChannel.sendMessageEmbeds(
+                SentryCrafter.craftSentryEmbed(
+                        pluginName,
+                        description,
+                        logState,
+                        member
+                ).build()
+        ).queue();
+    }
+
     private void toLogIntoConsole(Guild guild, String pluginName, String message, Member member){
         //'Doxer Beta Testing' | sentry | Wabezeter -> A fait X
         ConsoleManager.getInstance().toConsole("'" + guild.getName() + "'" +  ConsoleColors.PURPLE.getConsoleColor()+" | " + ConsoleColors.RESET.getConsoleColor() + pluginName + ConsoleColors.PURPLE.getConsoleColor() + " | " + ConsoleColors.RESET.getConsoleColor() + member.getEffectiveName() + " -> " + message, ConsoleState.LOG);

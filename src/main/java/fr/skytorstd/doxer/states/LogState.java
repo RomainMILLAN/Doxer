@@ -1,9 +1,17 @@
 package fr.skytorstd.doxer.states;
 
+import fr.skytorstd.doxer.states.messages.IconMessages;
+
 public enum LogState {
 
-    SUCCESSFUL(":white_check_mark:", "(*Réussite*)"),
-    ERROR(":x:", "(*Erreur*)");
+    SUCCESSFUL(
+            IconMessages.SUCCESS.getIcon(),
+            "(*Réussite*)"
+    ),
+    ERROR(
+            IconMessages.ERROR.getIcon(),
+            "(*Erreur*)"
+    );
 
     private final String emojiMessage;
     private final String statusMessage;

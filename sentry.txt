@@ -17,3 +17,9 @@
 [15/07/2023 10:35:31] wabezeter - BUT Sète - Development/DiscordModerator | Warn supprimé (`<@260278800049373187>` -> `Test de warn`)
 [15/07/2023 10:39:31] wabezeter - BUT Sète - Development/DiscordModerator | Warn supprimé (`<@260278800049373187>` -> `Test de warn compliquée ...`)
 [15/07/2023 10:40:02] wabezeter - BUT Sète - Development/DiscordModerator | Warn supprimé (`<@260278800049373187>` -> `Test de warn compliquée ...`)
+[15/07/2023 11:08:20] wabezeter - BUT Sète - Development/DiscordModerator | Lecture du profile de `<@260278800049373187>`
+[15/07/2023 11:09:27] wabezeter - BUT Sète - Development/DiscordModerator | Lecture du profile de `wabezeter`
+[15/07/2023 11:09:43] wabezeter - BUT Sète - Development/DiscordModerator | Warn supprimé (`<@260278800049373187>` -> `Test`)
+[15/07/2023 11:09:50] wabezeter - BUT Sète - Development/DiscordModerator | Lecture du profile de `wabezeter`
+[15/07/2023 11:10:40] wabezeter - BUT Sète - Development/DiscordModerator | Lecture du profile de <@260278800049373187>
+[15/07/2023 11:10:55] wabezeter - BUT Sète - Development/DiscordModerator | Lecture du profile de <@390751788862668800>

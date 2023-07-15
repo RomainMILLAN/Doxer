@@ -18,18 +18,32 @@ public enum DiscordModeratorMessages {
     PLUGIN_MODAL_WARN_REMOVE_DESCRIPTION("Supprimer un warn"),
 
 
+    PLUGIN_COMMAND_PROFILE_NAME("/profil <utilisateur>"),
+    PLUGIN_COMMAND_PROFILE_DESCRIPTION("Permet de voir le profil utilisateur"),
+    PLUGIN_OPTION_PROFILE_USER_DESCRIPTION("Utilisateur à consulter"),
+
     PLUGIN_COMMAND_2("/mute <utilisateur>"),
     PLUGIN_COMMAND_2_DESCRIPTION("Permet de gérer le mute d'un utilisateur"),
-    PLUGIN_COMMAND_3("/profil <utilisateur>"),
-    PLUGIN_COMMAND_3_DESCRIPTION("Permet de voir le profil utilisateur"),
 
     WARN_NONE("Aucun warns pour cette utilisateur"),
     WARN_ADD("Warn ajouté à %s pour `%s`"),
     WARN_REMOVE("Warn supprimé à %s (`%s`)"),
     WARN_NOT_FOUND("Le warn avec l'identifiant `%s` n'as pas était trouvé"),
 
-    SENTRY_WARN_ADD("Warn ajouté (`%s` -> `%s`)"),
-    SENTRY_WARN_REMOVE("Warn supprimé (`%s` -> `%s`)");
+    PROFILE_TITLE("%s **%s**"),
+    PROFILE_DESCRIPTION("Profile de %s"),
+    PROFILE_IDENTIFIANT("Identifiant"),
+    PROFILE_WARNS("Nombre de warn"),
+    PROFILE_NAME("Effective name"),
+    PROFILE_STATUS("Status utilisateur"),
+    PROFILE_CREATED_AT("Création du profile"),
+    PROFILE_USER_NOT_FOUND("Utilisateur non reconnue"),
+
+
+    SENTRY_WARN_ADD("Warn ajouté (%s -> `%s`)"),
+    SENTRY_WARN_REMOVE("Warn supprimé (%s -> `%s`)"),
+    SENTRY_PROFILE_NOT_FOUND("Utilisateur non trouvée pour lecture (`%s`)"),
+    SENTRY_PROFILE_SEE("Lecture du profile de %s");
 
     private final String message;
 

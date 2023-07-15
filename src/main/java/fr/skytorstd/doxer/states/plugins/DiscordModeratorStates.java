@@ -14,7 +14,10 @@ public enum DiscordModeratorStates {
     PLUGIN_TEXT_INPUT_WARN_ADD_STAFF_ID("text_input_warn_add_staffid"),
     PLUGIN_MODAL_WARN_ADD_ID("modal_warn_add"),
     PLUGIN_TEXT_INPUT_WARN_REMOVE_WARN_ID("text_input_warn_remove_warn_id"),
-    PLUGIN_MODAL_WARN_REMOVE_ID("modal_warn_remove");
+    PLUGIN_MODAL_WARN_REMOVE_ID("modal_warn_remove"),
+
+    PLUGIN_COMMAND_PROFILE_PREFIX("profile"),
+    PLUGIN_OPTION_PROFILE_USER_NAME("utilisateur");
 
 
     private final String state;

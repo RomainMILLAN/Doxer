@@ -7,6 +7,7 @@ import fr.skytorstd.doxer.manager.MemberPermission;
 import fr.skytorstd.doxer.manager.Sentry;
 import fr.skytorstd.doxer.manager.database.plugins.discordmoderator.DiscordModeratorWarnsDatabase;
 import fr.skytorstd.doxer.manager.embedCrafter.ErrorCrafter;
+import fr.skytorstd.doxer.manager.embedCrafter.plugins.discordModerator.DiscordModeratorProfileCrafter;
 import fr.skytorstd.doxer.manager.embedCrafter.plugins.discordModerator.DiscordModeratorWarnCrafter;
 import fr.skytorstd.doxer.objects.Plugin;
 import fr.skytorstd.doxer.objects.pluginSlashInterface;
@@ -43,8 +44,8 @@ public class discordModerator extends pluginSlashInterface {
                     new ArrayList<String>() {
                         {
                             add(DiscordModeratorMessages.PLUGIN_COMMAND_WARN_NAME.getMessage());
+                            add(DiscordModeratorMessages.PLUGIN_COMMAND_PROFILE_NAME.getMessage());
                             add(DiscordModeratorMessages.PLUGIN_COMMAND_2.getMessage());
-                            add(DiscordModeratorMessages.PLUGIN_COMMAND_3.getMessage());
                         }
                     }
             )
@@ -69,17 +70,24 @@ public class discordModerator extends pluginSlashInterface {
             return;
         }
 
-        if(Objects.requireNonNull(event.getOption(DiscordModeratorStates.PLUGIN_OPTION_WARN_ACTION_NAME.getState())).getAsString().equalsIgnoreCase(DiscordModeratorStates.PLUGIN_CHOICE_WARN_SHOW_NAME.getState())){
-            warnListCommand(event);
+        if(event.getName().equalsIgnoreCase(DiscordModeratorStates.PLUGIN_COMMAND_WARN_PREFIX.getState())){
+            if(Objects.requireNonNull(event.getOption(DiscordModeratorStates.PLUGIN_OPTION_WARN_ACTION_NAME.getState())).getAsString().equalsIgnoreCase(DiscordModeratorStates.PLUGIN_CHOICE_WARN_SHOW_NAME.getState())){
+                warnListCommand(event);
+            }
+
+            if(Objects.requireNonNull(event.getOption(DiscordModeratorStates.PLUGIN_OPTION_WARN_ACTION_NAME.getState())).getAsString().equalsIgnoreCase(DiscordModeratorStates.PLUGIN_CHOICE_WARN_ADD_NAME.getState())){
+                addWarnCommand(event);
+            }
+
+            if(Objects.requireNonNull(event.getOption(DiscordModeratorStates.PLUGIN_OPTION_WARN_ACTION_NAME.getState())).getAsString().equalsIgnoreCase(DiscordModeratorStates.PLUGIN_CHOICE_WARN_REMOVE_NAME.getState())){
+                removeWarnCommand(event);
+            }
         }
 
-        if(Objects.requireNonNull(event.getOption(DiscordModeratorStates.PLUGIN_OPTION_WARN_ACTION_NAME.getState())).getAsString().equalsIgnoreCase(DiscordModeratorStates.PLUGIN_CHOICE_WARN_ADD_NAME.getState())){
-            addWarnCommand(event);
+        if(event.getName().equalsIgnoreCase(DiscordModeratorStates.PLUGIN_COMMAND_PROFILE_PREFIX.getState())){
+            profileCommand(event);
         }
 
-        if(Objects.requireNonNull(event.getOption(DiscordModeratorStates.PLUGIN_OPTION_WARN_ACTION_NAME.getState())).getAsString().equalsIgnoreCase(DiscordModeratorStates.PLUGIN_CHOICE_WARN_REMOVE_NAME.getState())){
-            removeWarnCommand(event);
-        }
     }
 
     private void warnListCommand(SlashCommandInteractionEvent event) {
@@ -177,6 +185,56 @@ public class discordModerator extends pluginSlashInterface {
 
         event.replyModal(warnRemove).queue();
     }
+
+    private void profileCommand(SlashCommandInteractionEvent event) {
+        Member member = Objects.requireNonNull(event.getOption(DiscordModeratorStates.PLUGIN_OPTION_PROFILE_USER_NAME.getState())).getAsMember();
+        int warnCount = DiscordModeratorWarnsDatabase.memberCountWarns(member);
+
+        if(member == null){
+            event.replyEmbeds(
+                    ErrorCrafter.craftErrorDescriptionEmbed(
+                            DiscordModeratorStates.PLUGIN_NAME.getState(),
+                            DiscordModeratorMessages.PROFILE_USER_NOT_FOUND.getMessage()
+                    ).build()
+            ).setEphemeral(true)
+                    .queue(message -> {
+                        message.deleteOriginal().queueAfter(
+                                QueueAfterTimes.ERROR_TIME.getQueueAfterTime(),
+                                TimeUnit.SECONDS
+                        );
+                    });
+            Sentry.getInstance().toLog(
+                    DiscordModeratorStates.PLUGIN_NAME.getState(),
+                    String.format(
+                            DiscordModeratorMessages.SENTRY_PROFILE_NOT_FOUND.getMessage(),
+                            Objects.requireNonNull(event.getOption(
+                                    DiscordModeratorStates.PLUGIN_OPTION_PROFILE_USER_NAME.getState()
+                            )).getAsString()
+                    ),
+                    LogState.ERROR,
+                    event.getMember(),
+                    event.getGuild()
+            );
+        }
+
+        event.replyEmbeds(
+                DiscordModeratorProfileCrafter.craftProfileEmbed(
+                        member,
+                        warnCount
+                ).build()
+        ).setEphemeral(true).queue();
+        Sentry.getInstance().toLog(
+                DiscordModeratorStates.PLUGIN_NAME.getState(),
+                String.format(
+                        DiscordModeratorMessages.SENTRY_PROFILE_SEE.getMessage(),
+                        member.getAsMention()
+                ),
+                LogState.SUCCESSFUL,
+                event.getMember(),
+                event.getGuild()
+        );
+    }
+
 
     @Override
     public void onModalInteraction(ModalInteractionEvent event) {
@@ -277,4 +335,5 @@ public class discordModerator extends pluginSlashInterface {
         }
 
     }
+
 }

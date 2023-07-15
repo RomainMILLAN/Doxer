@@ -12,7 +12,9 @@ public enum IconMessages {
 
     DOCUMENT_WRITING("\uD83D\uDCDD"),
 
-    CADENA_LOCK("\uD83D\uDD12");
+    CADENA_LOCK("\uD83D\uDD12"),
+
+    PROFILE_ICON("✍\uFE0F");
 
 
 

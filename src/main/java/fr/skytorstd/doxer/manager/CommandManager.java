@@ -21,7 +21,8 @@ public class CommandManager {
 
         commandData.add(getHelperCommand());
         commandData.add(getPluginsListCommand());
-        commandData.add(getWarnCommand());
+        commandData.add(getDiscordModeratorWarnCommand());
+        commandData.add(getDiscordModeratorProfileCommand());
 
         return commandData;
     }
@@ -31,7 +32,8 @@ public class CommandManager {
                 OptionType.STRING,
                 HelperMessage.COMMAND_1_OPTION_1_PLUGIN_NAME.getMessage(),
                 HelperMessage.COMMAND_1_OPTION_1_PLUGIN_DESCRIPTION.getMessage()
-        );
+        )
+                .setRequired(true);
 
         for(Plugin pl : App.getPlugins()){
             plugin.addChoice(pl.getName(), pl.getName());
@@ -50,12 +52,13 @@ public class CommandManager {
         );
     }
 
-    private static SlashCommandData getWarnCommand() {
+    private static SlashCommandData getDiscordModeratorWarnCommand() {
         OptionData user = new OptionData(
                 OptionType.MENTIONABLE,
                 DiscordModeratorStates.PLUGIN_OPTION_WARN_USER_NAME.getState(),
                 DiscordModeratorMessages.PLUGIN_OPTION_WARN_USER_DESCRIPTION.getMessage()
-        );
+        )
+                .setRequired(true);
 
         OptionData action = new OptionData(
                 OptionType.STRING,
@@ -73,11 +76,26 @@ public class CommandManager {
                 .addChoice(
                         DiscordModeratorMessages.PLUGIN_CHOICE_WARN_REMOVE_DESCRIPTION.getMessage(),
                         DiscordModeratorStates.PLUGIN_CHOICE_WARN_REMOVE_NAME.getState()
-                        );
+                        )
+                .setRequired(true);
 
         return Commands.slash(
                 DiscordModeratorStates.PLUGIN_COMMAND_WARN_PREFIX.getState(),
             DiscordModeratorMessages.PLUGIN_COMMAND_WARN_DESCRIPTION.getMessage()
         ).addOptions(user, action);
+    }
+
+    private static SlashCommandData getDiscordModeratorProfileCommand() {
+        OptionData user = new OptionData(
+                OptionType.MENTIONABLE,
+                DiscordModeratorStates.PLUGIN_OPTION_PROFILE_USER_NAME.getState(),
+                DiscordModeratorMessages.PLUGIN_OPTION_PROFILE_USER_DESCRIPTION.getMessage()
+        )
+                .setRequired(true);
+
+        return Commands.slash(
+                DiscordModeratorStates.PLUGIN_COMMAND_PROFILE_PREFIX.getState(),
+                DiscordModeratorMessages.PLUGIN_COMMAND_PROFILE_DESCRIPTION.getMessage()
+        ).addOptions(user);
     }
 }

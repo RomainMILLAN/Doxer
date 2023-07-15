@@ -39,6 +39,8 @@ public enum DiscordModeratorMessages {
 
     SENTRY_WARN_ADD("Warn ajouté (%s -> `%s`)"),
     SENTRY_WARN_REMOVE("Warn supprimé (%s -> `%s`)"),
+    SENTRY_WARN_NOT_FOUND("Warn avec l'identifiant `%s` n'as pas était trouvé dans la BD"),
+    SENTRY_WARN_LIST_SUCCESS("Affichage de la liste des warns de %s"),
     SENTRY_PROFILE_NOT_FOUND("Utilisateur non trouvée pour lecture (`%s`)"),
     SENTRY_PROFILE_SEE("Lecture du profile de %s");
 

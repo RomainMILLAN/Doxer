@@ -23,14 +23,14 @@ public class Sentry {
         return INSTANCE;
     }
 
-    public void toLog(String pluginName, String description, LogState logState, Member member, Guild guild){
-        this.toLogIntoTextChannel(pluginName, description, logState, member);
+    public void toLog(String pluginName, String description, String command, LogState logState, Member member, Guild guild){
+        this.toLogIntoTextChannel(pluginName, description, command, logState, member);
         this.toLogIntoConsole(guild, pluginName, description, member);
         this.toLogIntoFile(guild, pluginName, description, member);
     }
 
-    public void toLog(String pluginName, String description, String command, LogState logState, Member member, Guild guild){
-        this.toLogIntoTextChannel(pluginName, description, command, logState, member);
+    public void toLog(String pluginName, String description, LogState logState, Member member, Guild guild){
+        this.toLogIntoTextChannel(pluginName, description, logState, member);
         this.toLogIntoConsole(guild, pluginName, description, member);
         this.toLogIntoFile(guild, pluginName, description, member);
     }

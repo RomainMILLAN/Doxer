@@ -23,3 +23,18 @@
 [15/07/2023 11:09:50] wabezeter - BUT Sète - Development/DiscordModerator | Lecture du profile de `wabezeter`
 [15/07/2023 11:10:40] wabezeter - BUT Sète - Development/DiscordModerator | Lecture du profile de <@260278800049373187>
 [15/07/2023 11:10:55] wabezeter - BUT Sète - Development/DiscordModerator | Lecture du profile de <@390751788862668800>
+[15/07/2023 14:38:26] wabezeter - BUT Sète - Development/DiscordSecurity | Permission incorrecte
+[15/07/2023 14:39:46] wabezeter - BUT Sète - Development/DiscordSecurity | Permission incorrecte
+[15/07/2023 14:43:20] wabezeter - BUT Sète - Development/DiscordSecurity | Permission incorrecte (`Sudo`)
+[15/07/2023 14:44:27] wabezeter - BUT Sète - Development/DiscordSecurity | Permission incorrecte (`Sudo`)
+[15/07/2023 14:47:17] wabezeter - BUT Sète - Development/DiscordSecurity | Permission incorrecte (`Sudo`)
+[15/07/2023 15:00:01] wabezeter - BUT Sète - Development/DiscordModerator | Affichage de la liste des warns de wabezeter
+[15/07/2023 15:00:07] wabezeter - BUT Sète - Development/DiscordModerator | Affichage de la liste des warns de DoxerV2 - BETA
+[15/07/2023 15:00:36] wabezeter - BUT Sète - Development/DiscordModerator | Affichage de la liste des warns de <@1108718319860715561>
+[15/07/2023 15:01:04] wabezeter - BUT Sète - Development/Helper | Visualisation de la liste des plugins
+[15/07/2023 15:01:48] wabezeter - BUT Sète - Development/DiscordModerator | Affichage de la liste des warns de <@260278800049373187>
+[15/07/2023 15:01:52] wabezeter - BUT Sète - Development/DiscordModerator | Affichage de la liste des warns de <@1108718319860715561>
+[15/07/2023 15:02:55] wabezeter - BUT Sète - Development/DiscordModerator | Affichage de la liste des warns de <@1108718319860715561>
+[15/07/2023 15:02:59] wabezeter - BUT Sète - Development/DiscordModerator | Affichage de la liste des warns de <@260278800049373187>
+[15/07/2023 15:03:10] wabezeter - BUT Sète - Development/DiscordModerator | Affichage de la liste des warns de <@1108718319860715561>
+[15/07/2023 15:03:43] wabezeter - BUT Sète - Development/DiscordModerator | Affichage de la liste des warns de <@1108718319860715561>

@@ -4,7 +4,9 @@ import fr.skytorstd.doxer.App;
 import fr.skytorstd.doxer.objects.Plugin;
 import fr.skytorstd.doxer.states.messages.command.HelperMessage;
 import fr.skytorstd.doxer.states.messages.plugin.DiscordModeratorMessages;
+import fr.skytorstd.doxer.states.messages.plugin.DiscordSecurityMessages;
 import fr.skytorstd.doxer.states.plugins.DiscordModeratorStates;
+import fr.skytorstd.doxer.states.plugins.DiscordSecurityStates;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
@@ -23,6 +25,8 @@ public class CommandManager {
         commandData.add(getPluginsListCommand());
         commandData.add(getDiscordModeratorWarnCommand());
         commandData.add(getDiscordModeratorProfileCommand());
+        commandData.add(getDiscordSecuritySecurityCommand());
+        commandData.add(getDiscordSecurityConfirmCommand());
 
         return commandData;
     }
@@ -97,5 +101,40 @@ public class CommandManager {
                 DiscordModeratorStates.PLUGIN_COMMAND_PROFILE_PREFIX.getState(),
                 DiscordModeratorMessages.PLUGIN_COMMAND_PROFILE_DESCRIPTION.getMessage()
         ).addOptions(user);
+    }
+
+    private static SlashCommandData getDiscordSecuritySecurityCommand() {
+        OptionData defaultGroup = new OptionData(
+                OptionType.STRING,
+                DiscordSecurityStates.PLUGIN_OPTION_SECURITY_DEFAULT_GROUP_NAME.getState(),
+                DiscordSecurityMessages.PLUGIN_OPTION_SECURITY_DEFAULT_GROUP_DESCRIPTION.getMessage()
+        )
+                .setRequired(false);
+
+        return Commands.slash(
+                DiscordSecurityStates.PLUGIN_COMMAND_SECURITY_PREFIX.getState(),
+                DiscordSecurityMessages.PLUGIN_COMMAND_SECURITY_DESCRIPTION.getMessage()
+        ).addOptions(defaultGroup);
+    }
+
+    private static SlashCommandData getDiscordSecurityConfirmCommand() {
+        OptionData user = new OptionData(
+                OptionType.MENTIONABLE,
+                DiscordSecurityStates.PLUGIN_OPTION_CONFIRM_USER_NAME.getState(),
+                DiscordSecurityMessages.PLUGIN_OPTION_CONFIRM_USER_DESCRIPTION.getMessage()
+        )
+                .setRequired(true);
+
+        OptionData group = new OptionData(
+                OptionType.MENTIONABLE,
+                DiscordSecurityStates.PLUGIN_OPTION_CONFIRM_GROUP_NAME.getState(),
+                DiscordSecurityMessages.PLUGIN_OPTION_CONFIRM_GROUP_DESCRIPTION.getMessage()
+        )
+                .setRequired(true);
+
+        return Commands.slash(
+                DiscordSecurityStates.PLUGIN_COMMAND_CONFIRM_PREFIX.getState(),
+                DiscordSecurityMessages.PLUGIN_COMMAND_CONFIRM_DESCRIPTION.getMessage()
+        ).addOptions(user, group);
     }
 }

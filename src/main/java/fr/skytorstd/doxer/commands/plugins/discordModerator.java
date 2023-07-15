@@ -12,8 +12,9 @@ import fr.skytorstd.doxer.objects.Plugin;
 import fr.skytorstd.doxer.objects.pluginSlashInterface;
 import fr.skytorstd.doxer.objects.plugins.discordmoderator.Warn;
 import fr.skytorstd.doxer.states.LogState;
+import fr.skytorstd.doxer.states.MemberPermissionStates;
 import fr.skytorstd.doxer.states.QueueAfterTimes;
-import fr.skytorstd.doxer.states.messages.application.MemberPermissionMessages;
+import fr.skytorstd.doxer.states.messages.application.SystemMessages;
 import fr.skytorstd.doxer.states.messages.plugin.DiscordModeratorMessages;
 import fr.skytorstd.doxer.states.plugins.DiscordModeratorStates;
 import net.dv8tion.jda.api.entities.Member;
@@ -52,43 +53,95 @@ public class discordModerator extends pluginSlashInterface {
     @Override
     public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
 
-        if(!MemberPermission.getInstance().isStaffMember(Objects.requireNonNull(event.getMember()))){
-            event.replyEmbeds(
-                    ErrorCrafter.craftErrorPermission(
-                            DiscordModeratorStates.PLUGIN_NAME.getState(),
-                            event.getMember(),
-                            event.getCommandString(),
-                            MemberPermissionMessages.STAFF
-                    ).build()
-            ).queue(message -> {
-                message.deleteOriginal().queueAfter(QueueAfterTimes.ERROR_TIME.getQueueAfterTime(), TimeUnit.SECONDS);
-            });
+        if(
+                event.getName().equalsIgnoreCase(DiscordModeratorStates.PLUGIN_COMMAND_WARN_PREFIX.getState())
+                || event.getName().equalsIgnoreCase(DiscordModeratorStates.PLUGIN_COMMAND_PROFILE_PREFIX.getState())
+        ){
 
-            return;
-        }
+            if(!MemberPermission.getInstance().isStaffMember(Objects.requireNonNull(event.getMember()))){
+                event.replyEmbeds(
+                        ErrorCrafter.craftErrorPermission(
+                                DiscordModeratorStates.PLUGIN_NAME.getState(),
+                                event.getMember(),
+                                event.getCommandString(),
+                                MemberPermissionStates.STAFF
+                        ).build()
+                )
+                        .setEphemeral(true)
+                        .queue(message -> {
+                            message.deleteOriginal().queueAfter(QueueAfterTimes.ERROR_TIME.getQueueAfterTime(), TimeUnit.SECONDS);
+                        });
 
-        if(event.getName().equalsIgnoreCase(DiscordModeratorStates.PLUGIN_COMMAND_WARN_PREFIX.getState())){
-            if(Objects.requireNonNull(event.getOption(DiscordModeratorStates.PLUGIN_OPTION_WARN_ACTION_NAME.getState())).getAsString().equalsIgnoreCase(DiscordModeratorStates.PLUGIN_CHOICE_WARN_SHOW_NAME.getState())){
-                warnListCommand(event);
+                Sentry.getInstance().toLog(
+                        DiscordModeratorStates.PLUGIN_NAME.getState(),
+                        String.format(
+                                SystemMessages.INCORRECT_PERMISSION_WITH_PERMISSION.getMessage(),
+                                MemberPermissionStates.STAFF.getMessage()
+                        ),
+                        event.getCommandString(),
+                        LogState.ERROR,
+                        event.getMember(),
+                        event.getGuild()
+                );
+
+                return;
             }
 
-            if(Objects.requireNonNull(event.getOption(DiscordModeratorStates.PLUGIN_OPTION_WARN_ACTION_NAME.getState())).getAsString().equalsIgnoreCase(DiscordModeratorStates.PLUGIN_CHOICE_WARN_ADD_NAME.getState())){
-                addWarnCommand(event);
+            if(event.getName().equalsIgnoreCase(DiscordModeratorStates.PLUGIN_COMMAND_WARN_PREFIX.getState())){
+                if(Objects.requireNonNull(event.getOption(DiscordModeratorStates.PLUGIN_OPTION_WARN_ACTION_NAME.getState())).getAsString().equalsIgnoreCase(DiscordModeratorStates.PLUGIN_CHOICE_WARN_SHOW_NAME.getState())){
+                    warnListCommand(event);
+                }
+
+                if(Objects.requireNonNull(event.getOption(DiscordModeratorStates.PLUGIN_OPTION_WARN_ACTION_NAME.getState())).getAsString().equalsIgnoreCase(DiscordModeratorStates.PLUGIN_CHOICE_WARN_ADD_NAME.getState())){
+                    addWarnCommand(event);
+                }
+
+                if(Objects.requireNonNull(event.getOption(DiscordModeratorStates.PLUGIN_OPTION_WARN_ACTION_NAME.getState())).getAsString().equalsIgnoreCase(DiscordModeratorStates.PLUGIN_CHOICE_WARN_REMOVE_NAME.getState())){
+                    removeWarnCommand(event);
+                }
             }
 
-            if(Objects.requireNonNull(event.getOption(DiscordModeratorStates.PLUGIN_OPTION_WARN_ACTION_NAME.getState())).getAsString().equalsIgnoreCase(DiscordModeratorStates.PLUGIN_CHOICE_WARN_REMOVE_NAME.getState())){
-                removeWarnCommand(event);
+            if(event.getName().equalsIgnoreCase(DiscordModeratorStates.PLUGIN_COMMAND_PROFILE_PREFIX.getState())){
+                profileCommand(event);
             }
-        }
 
-        if(event.getName().equalsIgnoreCase(DiscordModeratorStates.PLUGIN_COMMAND_PROFILE_PREFIX.getState())){
-            profileCommand(event);
         }
 
     }
 
     private void warnListCommand(SlashCommandInteractionEvent event) {
-        ArrayList<Warn> warnsList = DiscordModeratorWarnsDatabase.memberWarns(Objects.requireNonNull(event.getMember()));
+        Member member = event.getOption(
+                DiscordModeratorStates.PLUGIN_OPTION_PROFILE_USER_NAME.getState()
+        ).getAsMember();
+
+        if(null == member) {
+            event.replyEmbeds(
+                    ErrorCrafter.craftErrorCommand(
+                            DiscordModeratorStates.PLUGIN_NAME.getState(),
+                            DiscordModeratorMessages.PROFILE_USER_NOT_FOUND.getMessage()
+                    ).build()
+            )
+                    .setEphemeral(true)
+                    .queue(message -> {
+                        message.deleteOriginal().queueAfter(
+                                QueueAfterTimes.ERROR_TIME.getQueueAfterTime(),
+                                TimeUnit.SECONDS
+                        );
+                    });
+
+            Sentry.getInstance().toLog(
+                    DiscordModeratorStates.PLUGIN_NAME.getState(),
+                    String.format(
+                            DiscordModeratorMessages.SENTRY_PROFILE_NOT_FOUND.getMessage(),
+                            event.getOption(DiscordModeratorStates.PLUGIN_OPTION_PROFILE_USER_NAME.getState()).getAsString()
+                    ),
+                    LogState.ERROR,
+                    event.getMember(),
+                    event.getGuild()
+            );
+        }
+
+        ArrayList<Warn> warnsList = DiscordModeratorWarnsDatabase.memberWarns(Objects.requireNonNull(member));
 
         StringBuilder description = new StringBuilder();
         if(warnsList.size() == 0) {
@@ -111,8 +164,20 @@ public class discordModerator extends pluginSlashInterface {
         }
 
         event.replyEmbeds(
-                DiscordModeratorWarnCrafter.craftWarnListEmbed(event.getMember(), description.toString()).build()
+                DiscordModeratorWarnCrafter.craftWarnListEmbed(member, description.toString()).build()
         ).queue();
+
+        Sentry.getInstance().toLog(
+                DiscordModeratorStates.PLUGIN_NAME.getState(),
+                String.format(
+                        DiscordModeratorMessages.SENTRY_WARN_LIST_SUCCESS.getMessage(),
+                        member.getAsMention()
+                ),
+                event.getCommandString(),
+                LogState.SUCCESSFUL,
+                event.getMember(),
+                event.getGuild()
+        );
     }
 
     private void addWarnCommand(SlashCommandInteractionEvent event) {
@@ -156,7 +221,7 @@ public class discordModerator extends pluginSlashInterface {
                             DiscordModeratorStates.PLUGIN_NAME.getState(),
                             event.getMember(),
                             event.getCommandString(),
-                            MemberPermissionMessages.OP
+                            MemberPermissionStates.OP
                     ).build()
             ).setEphemeral(true)
                     .queue(message -> {
@@ -165,6 +230,18 @@ public class discordModerator extends pluginSlashInterface {
                                 TimeUnit.SECONDS
                         );
                     });
+
+            Sentry.getInstance().toLog(
+                    DiscordModeratorStates.PLUGIN_NAME.getState(),
+                    String.format(
+                            SystemMessages.INCORRECT_PERMISSION_WITH_PERMISSION.getMessage(),
+                            MemberPermissionStates.OP.getMessage()
+                    ),
+                    event.getCommandString(),
+                    LogState.ERROR,
+                    event.getMember(),
+                    event.getGuild()
+            );
         }
 
         TextInput warnId = TextInput.create(
@@ -200,6 +277,7 @@ public class discordModerator extends pluginSlashInterface {
                                 TimeUnit.SECONDS
                         );
                     });
+
             Sentry.getInstance().toLog(
                     DiscordModeratorStates.PLUGIN_NAME.getState(),
                     String.format(
@@ -220,6 +298,7 @@ public class discordModerator extends pluginSlashInterface {
                         warnCount
                 ).build()
         ).setEphemeral(true).queue();
+
         Sentry.getInstance().toLog(
                 DiscordModeratorStates.PLUGIN_NAME.getState(),
                 String.format(
@@ -231,7 +310,6 @@ public class discordModerator extends pluginSlashInterface {
                 event.getGuild()
         );
     }
-
 
     @Override
     public void onModalInteraction(ModalInteractionEvent event) {
@@ -300,6 +378,17 @@ public class discordModerator extends pluginSlashInterface {
                                     TimeUnit.SECONDS
                             );
                         });
+
+                Sentry.getInstance().toLog(
+                        DiscordModeratorStates.PLUGIN_NAME.getState(),
+                        String.format(
+                                DiscordModeratorMessages.SENTRY_WARN_NOT_FOUND.getMessage(),
+                                warnId
+                        ),
+                        LogState.ERROR,
+                        event.getMember(),
+                        event.getGuild()
+                );
             }
             Member warnMember = Objects.requireNonNull(Objects.requireNonNull(event.getGuild()).getMemberById(
                     warnToRemove.getUser_id()
@@ -318,6 +407,7 @@ public class discordModerator extends pluginSlashInterface {
                                 TimeUnit.SECONDS
                         );
                     });
+
             Sentry.getInstance().toLog(
                     DiscordModeratorStates.PLUGIN_NAME.getState(),
                     String.format(

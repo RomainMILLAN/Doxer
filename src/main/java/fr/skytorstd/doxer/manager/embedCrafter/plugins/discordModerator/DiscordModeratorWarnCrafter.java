@@ -12,7 +12,7 @@ public class DiscordModeratorWarnCrafter extends DiscordModeratorCrafter {
     private static EmbedBuilder craftDiscordModeratorWarnBase(Member member) {
         EmbedBuilder embed = craftDiscordModeratorBase();
 
-        embed.setTitle(IconMessages.CADENA_LOCK.getIcon() + " **Warns** - ("+ member.getAsMention() +")");
+        embed.setTitle(IconMessages.CADENA_LOCK.getIcon() + " **Warns** - (`"+ member.getEffectiveName() +"`)");
 
         return embed;
     }

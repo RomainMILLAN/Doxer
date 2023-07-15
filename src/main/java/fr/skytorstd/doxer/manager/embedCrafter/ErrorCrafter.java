@@ -1,7 +1,7 @@
 package fr.skytorstd.doxer.manager.embedCrafter;
 
+import fr.skytorstd.doxer.states.MemberPermissionStates;
 import fr.skytorstd.doxer.states.messages.IconMessages;
-import fr.skytorstd.doxer.states.messages.application.MemberPermissionMessages;
 import fr.skytorstd.doxer.states.messages.application.SystemMessages;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
@@ -36,10 +36,22 @@ public class ErrorCrafter extends EmbedCrafterBase {
         return embed;
     }
 
-    public static EmbedBuilder craftErrorPermission(String pluginName, Member member, String command, MemberPermissionMessages memberPermission) {
+    public static EmbedBuilder craftErrorPermission(String pluginName, Member member, String command, MemberPermissionStates memberPermission) {
         EmbedBuilder embed = craftErrorEmbedBase(pluginName);
 
-        embed.setDescription("> " + IconMessages.ERROR.getIcon() + " " + SystemMessages.INCORRECT_PERMISSION.getMessage() + " (`" + memberPermission.getMessage() + "`)")
+        StringBuilder description = new StringBuilder();
+        description
+                .append("> ")
+                .append(IconMessages.ERROR.getIcon())
+                .append(" ")
+                .append(
+                        String.format(
+                                SystemMessages.INCORRECT_PERMISSION_WITH_PERMISSION.getMessage(),
+                                memberPermission.getMessage()
+                        )
+                );
+
+        embed.setDescription(description)
                 .addField("Commande", "`" + command + "`", false);
 
         return embed;

@@ -4,7 +4,6 @@ public enum DiscordSecurityStates {
     PLUGIN_NAME("DiscordSecurity"),
 
     PLUGIN_COMMAND_SECURITY_PREFIX("security"),
-    PLUGIN_OPTION_SECURITY_ACTIVATED_NAME("state"),
     PLUGIN_OPTION_SECURITY_DEFAULT_GROUP_NAME("default_group"),
 
     PLUGIN_COMMAND_CONFIRM_PREFIX("confirm"),

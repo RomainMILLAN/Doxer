@@ -1,7 +1,6 @@
 package fr.skytorstd.doxer.commands.plugins;
 
 import fr.skytorstd.doxer.App;
-import fr.skytorstd.doxer.manager.ConsoleManager;
 import fr.skytorstd.doxer.manager.DateHourFormatter;
 import fr.skytorstd.doxer.manager.MemberPermission;
 import fr.skytorstd.doxer.manager.Sentry;
@@ -12,7 +11,6 @@ import fr.skytorstd.doxer.manager.embedCrafter.plugins.discordModerator.DiscordM
 import fr.skytorstd.doxer.objects.Plugin;
 import fr.skytorstd.doxer.objects.pluginSlashInterface;
 import fr.skytorstd.doxer.objects.plugins.discordmoderator.Warn;
-import fr.skytorstd.doxer.states.ConsoleState;
 import fr.skytorstd.doxer.states.LogState;
 import fr.skytorstd.doxer.states.QueueAfterTimes;
 import fr.skytorstd.doxer.states.messages.application.MemberPermissionMessages;
@@ -45,7 +43,6 @@ public class discordModerator extends pluginSlashInterface {
                         {
                             add(DiscordModeratorMessages.PLUGIN_COMMAND_WARN_NAME.getMessage());
                             add(DiscordModeratorMessages.PLUGIN_COMMAND_PROFILE_NAME.getMessage());
-                            add(DiscordModeratorMessages.PLUGIN_COMMAND_2.getMessage());
                         }
                     }
             )

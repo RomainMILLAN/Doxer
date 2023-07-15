@@ -22,9 +22,6 @@ public enum DiscordModeratorMessages {
     PLUGIN_COMMAND_PROFILE_DESCRIPTION("Permet de voir le profil utilisateur"),
     PLUGIN_OPTION_PROFILE_USER_DESCRIPTION("Utilisateur à consulter"),
 
-    PLUGIN_COMMAND_2("/mute <utilisateur>"),
-    PLUGIN_COMMAND_2_DESCRIPTION("Permet de gérer le mute d'un utilisateur"),
-
     WARN_NONE("Aucun warns pour cette utilisateur"),
     WARN_ADD("Warn ajouté à %s pour `%s`"),
     WARN_REMOVE("Warn supprimé à %s (`%s`)"),

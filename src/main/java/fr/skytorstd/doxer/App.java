@@ -2,6 +2,7 @@ package fr.skytorstd.doxer;
 
 import fr.skytorstd.doxer.commands.plugins.discordModerator;
 import fr.skytorstd.doxer.commands.helper;
+import fr.skytorstd.doxer.commands.plugins.discordSecurity;
 import fr.skytorstd.doxer.manager.*;
 import fr.skytorstd.doxer.objects.Plugin;
 import fr.skytorstd.doxer.states.ConsoleState;
@@ -70,6 +71,7 @@ public class App
 
     public static void updateCommands() {
         jda.addEventListener(new discordModerator());
+        jda.addEventListener(new discordSecurity());
         jda.addEventListener(new helper());
 
         jda.getGuildById(App.guildId).updateCommands().addCommands(CommandManager.updateSlashCommands()).queue();

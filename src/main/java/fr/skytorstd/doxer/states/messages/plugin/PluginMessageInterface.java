@@ -2,7 +2,6 @@ package fr.skytorstd.doxer.states.messages.plugin;
 
 public enum PluginMessageInterface {
 
-    PLUGIN_NAME("PLUGIN_NAME"),
     PLUGIN_DESCRIPTION("PLUGIN_DESCRIPTION"),
 
     PLUGIN_COMMAND_1("/COMMAND <1>"),

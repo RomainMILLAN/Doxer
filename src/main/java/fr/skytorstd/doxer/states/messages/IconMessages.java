@@ -10,7 +10,9 @@ public enum IconMessages {
 
     WRENCH("\uD83D\uDD27"),
 
-    DOCUMENT_WRITING("\uD83D\uDCDD");
+    DOCUMENT_WRITING("\uD83D\uDCDD"),
+
+    CADENA_LOCK("\uD83D\uDD12");
 
 
 

@@ -3,7 +3,8 @@ package fr.skytorstd.doxer.manager;
 import fr.skytorstd.doxer.App;
 import fr.skytorstd.doxer.objects.Plugin;
 import fr.skytorstd.doxer.states.messages.command.HelperMessage;
-import fr.skytorstd.doxer.states.messages.plugin.DiscordModeratorMessage;
+import fr.skytorstd.doxer.states.messages.plugin.DiscordModeratorMessages;
+import fr.skytorstd.doxer.states.plugins.DiscordModeratorStates;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
@@ -51,32 +52,32 @@ public class CommandManager {
 
     private static SlashCommandData getWarnCommand() {
         OptionData user = new OptionData(
-                OptionType.USER,
-                DiscordModeratorMessage.PLUGIN_OPTION_WARN_USER_NAME.getMessage(),
-                DiscordModeratorMessage.PLUGIN_OPTION_WARN_USER_DESCRIPTION.getMessage()
+                OptionType.MENTIONABLE,
+                DiscordModeratorStates.PLUGIN_OPTION_WARN_USER_NAME.getState(),
+                DiscordModeratorMessages.PLUGIN_OPTION_WARN_USER_DESCRIPTION.getMessage()
         );
 
         OptionData action = new OptionData(
                 OptionType.STRING,
-                DiscordModeratorMessage.PLUGIN_OPTION_WARN_ACTION_NAME.getMessage(),
-                DiscordModeratorMessage.PLUGIN_OPTION_WARN_ACTION_DESCRIPTION.getMessage()
+                DiscordModeratorStates.PLUGIN_OPTION_WARN_ACTION_NAME.getState(),
+                DiscordModeratorMessages.PLUGIN_OPTION_WARN_ACTION_DESCRIPTION.getMessage()
         )
                 .addChoice(
-                        DiscordModeratorMessage.PLUGIN_CHOICE_WARN_SHOW_NAME.getMessage(),
-                        DiscordModeratorMessage.PLUGIN_CHOICE_WARN_SHOW_DESCRIPTION.getMessage()
+                        DiscordModeratorMessages.PLUGIN_CHOICE_WARN_SHOW_DESCRIPTION.getMessage(),
+                        DiscordModeratorStates.PLUGIN_CHOICE_WARN_SHOW_NAME.getState()
                 )
                 .addChoice(
-                        DiscordModeratorMessage.PLUGIN_CHOICE_WARN_ADD_NAME.getMessage(),
-                        DiscordModeratorMessage.PLUGIN_CHOICE_WARN_ADD_DESCRIPTION.getMessage()
-                )
+                        DiscordModeratorMessages.PLUGIN_CHOICE_WARN_ADD_DESCRIPTION.getMessage(),
+                        DiscordModeratorStates.PLUGIN_CHOICE_WARN_ADD_NAME.getState()
+                        )
                 .addChoice(
-                        DiscordModeratorMessage.PLUGIN_CHOICE_WARN_REMOVE_NAME.getMessage(),
-                        DiscordModeratorMessage.PLUGIN_CHOICE_WARN_REMOVE_DESCRIPTION.getMessage()
-                );
+                        DiscordModeratorMessages.PLUGIN_CHOICE_WARN_REMOVE_DESCRIPTION.getMessage(),
+                        DiscordModeratorStates.PLUGIN_CHOICE_WARN_REMOVE_NAME.getState()
+                        );
 
         return Commands.slash(
-            DiscordModeratorMessage.PLUGIN_COMMAND_WARN_PREFIX.getMessage(),
-            DiscordModeratorMessage.PLUGIN_COMMAND_WARN_DESCRIPTION.getMessage()
+                DiscordModeratorStates.PLUGIN_COMMAND_WARN_PREFIX.getState(),
+            DiscordModeratorMessages.PLUGIN_COMMAND_WARN_DESCRIPTION.getMessage()
         ).addOptions(user, action);
     }
 }

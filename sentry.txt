@@ -12,3 +12,8 @@
 [14/07/2023 07:55:55] wabezeter - BUT Sète - Development/Helper | Visualisation de la liste des plugins
 [14/07/2023 07:55:59] wabezeter - BUT Sète - Development/Helper | Visualisation des commandes de  (`DiscordModerator`)
 [14/07/2023 07:56:01] wabezeter - BUT Sète - Development/Helper | Commande incorrecte
+[15/07/2023 09:37:20] wabezeter - BUT Sète - Development/Helper | Visualisation de la liste des plugins
+[15/07/2023 09:37:25] wabezeter - BUT Sète - Development/Helper | Visualisation des commandes de  (`DiscordModerator`)
+[15/07/2023 10:35:31] wabezeter - BUT Sète - Development/DiscordModerator | Warn supprimé (`<@260278800049373187>` -> `Test de warn`)
+[15/07/2023 10:39:31] wabezeter - BUT Sète - Development/DiscordModerator | Warn supprimé (`<@260278800049373187>` -> `Test de warn compliquée ...`)
+[15/07/2023 10:40:02] wabezeter - BUT Sète - Development/DiscordModerator | Warn supprimé (`<@260278800049373187>` -> `Test de warn compliquée ...`)

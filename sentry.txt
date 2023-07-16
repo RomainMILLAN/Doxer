@@ -38,3 +38,8 @@
 [15/07/2023 15:02:59] wabezeter - BUT Sète - Development/DiscordModerator | Affichage de la liste des warns de <@260278800049373187>
 [15/07/2023 15:03:10] wabezeter - BUT Sète - Development/DiscordModerator | Affichage de la liste des warns de <@1108718319860715561>
 [15/07/2023 15:03:43] wabezeter - BUT Sète - Development/DiscordModerator | Affichage de la liste des warns de <@1108718319860715561>
+[16/07/2023 07:40:40] wabezeter - BUT Sète - Development/DiscordSecurity | Confirmation du compte <@1108718319860715561>
+[16/07/2023 07:41:18] wabezeter - BUT Sète - Development/DiscordSecurity | Confirmation du compte <@1108718319860715561>
+[16/07/2023 07:41:50] wabezeter - BUT Sète - Development/DiscordSecurity | Confirmation du compte <@1108718319860715561>
+[16/07/2023 07:45:44] wabezeter - BUT Sète - Development/DiscordSecurity | Permission incorrecte (`Sudo`)
+[16/07/2023 07:45:49] wabezeter - BUT Sète - Development/DiscordSecurity | Permission incorrecte (`Sudo`)

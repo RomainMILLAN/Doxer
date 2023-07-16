@@ -6,7 +6,11 @@ public enum SystemMessages {
     PLUGIN_REGISTER_SUCCESS("Plugin enregistrée"),
     INCORRECT_COMMAND("Commande incorrecte"),
     INCORRECT_PERMISSION("Permission incorrecte"),
-    INCORRECT_PERMISSION_WITH_PERMISSION("Permission incorrecte (`%s`)");
+    INCORRECT_PERMISSION_WITH_PERMISSION("Permission incorrecte (`%s`)"),
+    INCORRECT_TEXT_CHANNEL("Channel incorrecte"),
+    INCORRECT_TEXT_CHANNEL_WITH_NAME(INCORRECT_TEXT_CHANNEL.getMessage() + " (`%s`)"),
+    INCORRECT_ROLE("Role incorrecte"),
+    INCORRECT_ROLE_WITH_NAME(INCORRECT_ROLE.getMessage() + " (``)");
 
 
     private String message;

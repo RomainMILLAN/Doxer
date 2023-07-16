@@ -104,37 +104,37 @@ public class CommandManager {
     }
 
     private static SlashCommandData getDiscordSecuritySecurityCommand() {
-        OptionData defaultGroup = new OptionData(
-                OptionType.STRING,
-                DiscordSecurityStates.PLUGIN_OPTION_SECURITY_DEFAULT_GROUP_NAME.getState(),
-                DiscordSecurityMessages.PLUGIN_OPTION_SECURITY_DEFAULT_GROUP_DESCRIPTION.getMessage()
-        )
-                .setRequired(false);
-
         return Commands.slash(
                 DiscordSecurityStates.PLUGIN_COMMAND_SECURITY_PREFIX.getState(),
                 DiscordSecurityMessages.PLUGIN_COMMAND_SECURITY_DESCRIPTION.getMessage()
-        ).addOptions(defaultGroup);
+        );
     }
 
     private static SlashCommandData getDiscordSecurityConfirmCommand() {
         OptionData user = new OptionData(
-                OptionType.MENTIONABLE,
+                OptionType.USER,
                 DiscordSecurityStates.PLUGIN_OPTION_CONFIRM_USER_NAME.getState(),
                 DiscordSecurityMessages.PLUGIN_OPTION_CONFIRM_USER_DESCRIPTION.getMessage()
         )
                 .setRequired(true);
 
         OptionData group = new OptionData(
-                OptionType.MENTIONABLE,
+                OptionType.ROLE,
                 DiscordSecurityStates.PLUGIN_OPTION_CONFIRM_GROUP_NAME.getState(),
                 DiscordSecurityMessages.PLUGIN_OPTION_CONFIRM_GROUP_DESCRIPTION.getMessage()
         )
-                .setRequired(true);
+                .setRequired(false);
+
+        OptionData nickname = new OptionData(
+                OptionType.STRING,
+                DiscordSecurityStates.PLUGIN_OPTION_CONFIRM_NICKNAME_NAME.getState(),
+                DiscordSecurityMessages.PLUGIN_OPTION_CONFIRM_NICKNAME_DESCRIPTION.getMessage()
+        )
+                .setRequired(false);
 
         return Commands.slash(
                 DiscordSecurityStates.PLUGIN_COMMAND_CONFIRM_PREFIX.getState(),
                 DiscordSecurityMessages.PLUGIN_COMMAND_CONFIRM_DESCRIPTION.getMessage()
-        ).addOptions(user, group);
+        ).addOptions(user, group, nickname);
     }
 }

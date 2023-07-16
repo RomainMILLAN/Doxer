@@ -4,6 +4,7 @@ import fr.skytorstd.doxer.manager.embedCrafter.EmbedCrafterBase;
 import fr.skytorstd.doxer.states.messages.IconMessages;
 import fr.skytorstd.doxer.states.messages.plugin.DiscordSecurityMessages;
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Member;
 
 import java.awt.*;
 
@@ -28,6 +29,20 @@ public class DiscordSecurityCrafter extends EmbedCrafterBase {
                         securityState
                     )
                 );
+
+        return embed;
+    }
+
+    public static EmbedBuilder craftConfirmEmbed(Member memberConfirmed, Member staff) {
+        EmbedBuilder embed = craftDiscordSecurityBase();
+
+        embed.setDescription(
+                String.format(
+                        DiscordSecurityMessages.CONFIRM_MESSAGE.getMessage(),
+                        memberConfirmed.getAsMention(),
+                        staff.getAsMention()
+                )
+        );
 
         return embed;
     }

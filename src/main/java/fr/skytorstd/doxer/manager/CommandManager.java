@@ -28,6 +28,7 @@ public class CommandManager {
         commandData.add(getPollExclamerPollCommand());
         commandData.add(getMessageMoverMoveCommand());
         commandData.add(getWeatherWeatherCommand());
+        commandData.add(getVoiceClickVoiceClickCommand());
 
         return commandData;
     }
@@ -193,5 +194,31 @@ public class CommandManager {
                 WeatherStates.PLUGIN_COMMAND_WEATHER_PREFIX.getState(),
                 WeatherMessages.PLUGIN_COMMAND_WEATHER_COMMAND.getMessage()
         ).addOptions(ville);
+    }
+
+    private static SlashCommandData getVoiceClickVoiceClickCommand() {
+        OptionData action = new OptionData(
+                OptionType.STRING,
+                VoiceClickStates.PLUGIN_OPTION_VOICE_CLICK_ACTION_NAME.getState(),
+                VoiceClickMessages.PLUGIN_OPTION_VOICECLICK_ACTION_DESCRIPTION.getMessage()
+        )
+                .setRequired(true)
+                .addChoice(
+                        VoiceClickMessages.PLUGIN_OPTION_VOICECLICK_CHOICE_LIST_DESCRIPTION.getMessage(),
+                        VoiceClickStates.PLUGIN_OPTION_VOICE_CLICK_CHOICE_LIST_NAME.getState()
+                        )
+                .addChoice(
+                        VoiceClickMessages.PLUGIN_OPTION_VOICECLICK_CHOICE_ADD_DESCRIPTION.getMessage(),
+                        VoiceClickStates.PLUGIN_OPTION_VOICE_CLICK_CHOICE_ADD_NAME.getState()
+                        )
+                .addChoice(
+                        VoiceClickMessages.PLUGIN_OPTION_VOICECLICK_CHOICE_REMOVE_DESCRIPTION.getMessage(),
+                        VoiceClickStates.PLUGIN_OPTION_VOICE_CLICK_CHOICE_REMOVE_NAME.getState()
+                );
+
+        return Commands.slash(
+                VoiceClickStates.PLUGIN_COMMAND_VOICE_CLICK_PREFIX.getState(),
+                VoiceClickMessages.PLUGIN_COMMAND_VOICECLICK_DESCRIPTION.getMessage()
+        ).addOptions(action);
     }
 }

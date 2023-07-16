@@ -49,3 +49,15 @@
 [16/07/2023 08:59:22] wabezeter - BUT Sète - Development/MessageMover | Message déplacé vers <#1128200834598043671>
 [16/07/2023 08:59:43] wabezeter - BUT Sète - Development/MessageMover | Channel non trouvée (`1`)
 [16/07/2023 09:02:32] wabezeter - BUT Sète - Development/MessageMover | Message déplacé vers (`test` -> <#1128200834598043671>)
+[16/07/2023 10:07:48] wabezeter - BUT Sète - Development/VoiceClick | Lecture de la liste des channels voiceclicks
+[16/07/2023 10:32:29] wabezeter - BUT Sète - Development/VoiceClick | Lecture de la liste des channels voiceclicks
+[16/07/2023 10:36:29] wabezeter - BUT Sète - Development/VoiceClick | Channel Voice Click supprimée `<#1128200834598043677>`
+[16/07/2023 10:36:33] wabezeter - BUT Sète - Development/VoiceClick | Lecture de la liste des channels voiceclicks
+[16/07/2023 10:40:09] wabezeter - BUT Sète - Development/VoiceClick | Lecture de la liste des channels voiceclicks
+[16/07/2023 10:40:29] wabezeter - BUT Sète - Development/VoiceClick | Channel Voice Click supprimée `<#1128200834598043677>`
+[16/07/2023 10:40:33] wabezeter - BUT Sète - Development/VoiceClick | Lecture de la liste des channels voiceclicks
+[16/07/2023 10:52:05] wabezeter - BUT Sète - Development/VoiceClick | Lecture de la liste des channels voiceclicks
+[16/07/2023 10:52:10] wabezeter - BUT Sète - Development/VoiceClick | Channel Voice Click supprimée `1128200834598043677`
+[16/07/2023 10:52:13] wabezeter - BUT Sète - Development/VoiceClick | Lecture de la liste des channels voiceclicks
+[16/07/2023 11:04:27] wabezeter - BUT Sète - Development/VoiceClick | Channel Voice Click ajouté <#1128200834598043677>
+[16/07/2023 11:04:36] wabezeter - BUT Sète - Development/VoiceClick | Lecture de la liste des channels voiceclicks

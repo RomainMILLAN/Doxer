@@ -1,6 +1,5 @@
 package fr.skytorstd.doxer.commands.plugins;
 
-import fr.romainmillan.jdw.JavaDiscordWebhook;
 import fr.skytorstd.doxer.App;
 import fr.skytorstd.doxer.manager.MemberPermission;
 import fr.skytorstd.doxer.manager.Sentry;
@@ -17,7 +16,6 @@ import fr.skytorstd.doxer.states.plugins.MessageMoverStates;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -124,7 +122,7 @@ public class messageMover extends pluginSlashInterface {
         event.getChannel().retrieveMessageById(messageId).queue(message -> {
 
             newChannel.createWebhook(message.getAuthor().getName()).queue(webhook -> {
-                JavaDiscordWebhook javaDiscordWebhook = new JavaDiscordWebhook(webhook.getToken(), webhook.getIdLong());
+                /*JavaDiscordWebhook javaDiscordWebhook = new JavaDiscordWebhook(webhook.getToken(), webhook.getIdLong());
 
                 javaDiscordWebhook.setContent(message.getContentRaw());
                 javaDiscordWebhook.setUsername(message.getAuthor().getName());
@@ -134,7 +132,7 @@ public class messageMover extends pluginSlashInterface {
                     javaDiscordWebhook.execute();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
-                }
+                }*/
             });
 
             event.replyEmbeds(

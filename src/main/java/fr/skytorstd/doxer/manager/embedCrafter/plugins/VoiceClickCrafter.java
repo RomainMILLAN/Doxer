@@ -35,8 +35,6 @@ public class VoiceClickCrafter extends EmbedCrafterBase {
                     .append(vc.getVc_name())
                     .append(" (`")
                     .append(vc.getVc_channel_id())
-                    .append("` -> `")
-                    .append(vc.getVc_category_id())
                     .append("`)\n");
         }
 

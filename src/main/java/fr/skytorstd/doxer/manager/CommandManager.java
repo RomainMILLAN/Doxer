@@ -29,6 +29,7 @@ public class CommandManager {
         commandData.add(getMessageMoverMoveCommand());
         commandData.add(getWeatherWeatherCommand());
         commandData.add(getVoiceClickVoiceClickCommand());
+        commandData.add(getGrouperGrouperCommand());
 
         return commandData;
     }
@@ -220,5 +221,19 @@ public class CommandManager {
                 VoiceClickStates.PLUGIN_COMMAND_VOICE_CLICK_PREFIX.getState(),
                 VoiceClickMessages.PLUGIN_COMMAND_VOICECLICK_DESCRIPTION.getMessage()
         ).addOptions(action);
+    }
+
+    private static SlashCommandData getGrouperGrouperCommand() {
+        OptionData name = new OptionData(
+                OptionType.STRING,
+                GrouperStates.PLUGIN_OPTION_GROUPER_NAME_NAME.getState(),
+                GrouperMessages.PLUGIN_OPTION_GROUPER_NAME_DESCRIPTION.getMessage()
+        )
+                .setRequired(true);
+
+        return Commands.slash(
+                GrouperStates.PLUGIN_COMMAND_GROUPER_PREFIX.getState(),
+                GrouperMessages.PLUGIN_COMMAND_GROUPER_DESCRIPTION.getMessage()
+        ).addOptions(name);
     }
 }

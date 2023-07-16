@@ -75,6 +75,7 @@ public class App
         jda.addEventListener(new messageMover());
         jda.addEventListener(new weather());
         jda.addEventListener(new voiceClick());
+        jda.addEventListener(new grouper());
         jda.addEventListener(new helper());
 
         jda.getGuildById(App.guildId).updateCommands().addCommands(CommandManager.updateSlashCommands()).queue();

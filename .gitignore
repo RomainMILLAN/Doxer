@@ -1,7 +1,10 @@
 # IDE configuration file
 .vscode
 .idea
+target/
 
 # Doxer ignore files
 .env
 doxer.db
+sentry.txt
+

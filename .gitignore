@@ -4,3 +4,4 @@
 
 # Doxer ignore files
 .env
+doxer.db

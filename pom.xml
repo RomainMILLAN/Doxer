@@ -45,6 +45,11 @@
       <artifactId>sqlite-jdbc</artifactId>
       <version>3.39.3.0</version>
     </dependency>
+    <dependency>
+      <groupId>com.github.prominence</groupId>
+      <artifactId>openweathermap-api</artifactId>
+      <version>2.3.0</version>
+    </dependency>
 
     <dependency>
       <groupId>junit</groupId>

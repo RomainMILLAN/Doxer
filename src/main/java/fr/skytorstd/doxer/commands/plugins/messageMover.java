@@ -14,14 +14,11 @@ import fr.skytorstd.doxer.states.QueueAfterTimes;
 import fr.skytorstd.doxer.states.messages.application.SystemMessages;
 import fr.skytorstd.doxer.states.messages.plugin.MessageMoverMessages;
 import fr.skytorstd.doxer.states.plugins.MessageMoverStates;
-import net.dv8tion.jda.api.entities.Webhook;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
-import net.dv8tion.jda.api.requests.restaction.WebhookAction;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class messageMover extends pluginSlashInterface {

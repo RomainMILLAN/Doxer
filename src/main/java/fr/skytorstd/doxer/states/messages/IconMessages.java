@@ -14,10 +14,16 @@ public enum IconMessages {
 
     CADENA_LOCK("\uD83D\uDD12"),
 
-    PROFILE_ICON("✍\uFE0F");
-
-
-
+    PROFILE_ICON("✍\uFE0F"),
+    METEO("⛅️"),
+    TEMPERATURE("🌡"),
+    WIND("🌬"),
+    EPHEMERIDE_DAY("🌖"),
+    EPHEMERIDE_NIGHT("🌒"),
+    ARROW_UP("▲"),
+    ARROW_DOWN("▼"),
+    BULLES("🫧"),
+    PRESSURE("🎚");
 
     private String icon;
 

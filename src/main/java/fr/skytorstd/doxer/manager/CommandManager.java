@@ -4,10 +4,7 @@ import fr.skytorstd.doxer.App;
 import fr.skytorstd.doxer.objects.Plugin;
 import fr.skytorstd.doxer.states.messages.command.HelperMessage;
 import fr.skytorstd.doxer.states.messages.plugin.*;
-import fr.skytorstd.doxer.states.plugins.DiscordModeratorStates;
-import fr.skytorstd.doxer.states.plugins.DiscordSecurityStates;
-import fr.skytorstd.doxer.states.plugins.MessageMoverStates;
-import fr.skytorstd.doxer.states.plugins.PollExclamerStates;
+import fr.skytorstd.doxer.states.plugins.*;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
@@ -30,6 +27,7 @@ public class CommandManager {
         commandData.add(getDiscordSecurityConfirmCommand());
         commandData.add(getPollExclamerPollCommand());
         commandData.add(getMessageMoverMoveCommand());
+        commandData.add(getWeatherWeatherCommand());
 
         return commandData;
     }
@@ -181,5 +179,19 @@ public class CommandManager {
                 MessageMoverStates.PLUGIN_COMMAND_MOVE_PREFIX.getState(),
                 MessageMoverMessages.PLUGIN_COMMAND_MOVE_DESCRIPTION.getMessage()
         ).addOptions(messageId, channelId);
+    }
+
+    private static SlashCommandData getWeatherWeatherCommand() {
+        OptionData ville = new OptionData(
+                OptionType.STRING,
+                WeatherStates.PLUGIN_OPTION_WEATHER_VILLE_NAME.getState(),
+                WeatherMessages.PLUGIN_OPTION_WEATHER_VILLE_DESCRIPTION.getMessage()
+        )
+                .setRequired(false);
+
+        return Commands.slash(
+                WeatherStates.PLUGIN_COMMAND_WEATHER_PREFIX.getState(),
+                WeatherMessages.PLUGIN_COMMAND_WEATHER_COMMAND.getMessage()
+        ).addOptions(ville);
     }
 }

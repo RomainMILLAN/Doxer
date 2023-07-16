@@ -3,12 +3,10 @@ package fr.skytorstd.doxer.manager;
 import fr.skytorstd.doxer.App;
 import fr.skytorstd.doxer.objects.Plugin;
 import fr.skytorstd.doxer.states.messages.command.HelperMessage;
-import fr.skytorstd.doxer.states.messages.plugin.DiscordModeratorMessages;
-import fr.skytorstd.doxer.states.messages.plugin.DiscordSecurityMessages;
-import fr.skytorstd.doxer.states.messages.plugin.PluginMessageInterface;
-import fr.skytorstd.doxer.states.messages.plugin.PollExclamerMessages;
+import fr.skytorstd.doxer.states.messages.plugin.*;
 import fr.skytorstd.doxer.states.plugins.DiscordModeratorStates;
 import fr.skytorstd.doxer.states.plugins.DiscordSecurityStates;
+import fr.skytorstd.doxer.states.plugins.MessageMoverStates;
 import fr.skytorstd.doxer.states.plugins.PollExclamerStates;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
@@ -31,6 +29,7 @@ public class CommandManager {
         commandData.add(getDiscordSecuritySecurityCommand());
         commandData.add(getDiscordSecurityConfirmCommand());
         commandData.add(getPollExclamerPollCommand());
+        commandData.add(getMessageMoverMoveCommand());
 
         return commandData;
     }
@@ -161,5 +160,26 @@ public class CommandManager {
                 PollExclamerStates.PLUGIN_COMMAND_POLL_PREFIX.getState(),
                 PollExclamerMessages.PLUGIN_COMMAND_POLL_DESCRIPTION.getMessage()
         ).addOptions(question, reponse);
+    }
+
+    private static SlashCommandData getMessageMoverMoveCommand(){
+        OptionData messageId = new OptionData(
+                OptionType.STRING,
+                MessageMoverStates.PLUGIN_OPTION_MOVE_MESSAGE_ID_NAME.getState(),
+                MessageMoverMessages.PLUGIN_OPTION_MOVE_MESSAGE_ID_DESCRIPTION.getMessage()
+        )
+                .setRequired(true);
+
+        OptionData channelId = new OptionData(
+                OptionType.STRING,
+                MessageMoverStates.PLUGIN_OPTION_MOVE_CHANNEL_ID_NAME.getState(),
+                MessageMoverMessages.PLUGIN_OPTION_MOVE_CHANNEL_ID_DESCRIPTION.getMessage()
+        )
+                .setRequired(true);
+
+        return Commands.slash(
+                MessageMoverStates.PLUGIN_COMMAND_MOVE_PREFIX.getState(),
+                MessageMoverMessages.PLUGIN_COMMAND_MOVE_DESCRIPTION.getMessage()
+        ).addOptions(messageId, channelId);
     }
 }

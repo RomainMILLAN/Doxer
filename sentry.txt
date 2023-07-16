@@ -46,3 +46,6 @@
 [16/07/2023 08:15:14] wabezeter - BUT Sète - Development/PLUGIN_NAME | Un sondage crée (`test de question`)
 [16/07/2023 08:15:33] wabezeter - BUT Sète - Development/PLUGIN_NAME | Un sondage crée (`Test`)
 [16/07/2023 08:17:12] wabezeter - BUT Sète - Development/PLUGIN_NAME | Un sondage crée (`Test de question`)
+[16/07/2023 08:59:22] wabezeter - BUT Sète - Development/MessageMover | Message déplacé vers <#1128200834598043671>
+[16/07/2023 08:59:43] wabezeter - BUT Sète - Development/MessageMover | Channel non trouvée (`1`)
+[16/07/2023 09:02:32] wabezeter - BUT Sète - Development/MessageMover | Message déplacé vers (`test` -> <#1128200834598043671>)

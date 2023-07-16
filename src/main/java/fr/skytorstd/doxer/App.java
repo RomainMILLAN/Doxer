@@ -72,7 +72,6 @@ public class App
         jda.addEventListener(new discordModerator());
         jda.addEventListener(new discordSecurity());
         jda.addEventListener(new pollExclamer());
-        jda.addEventListener(new messageMover());
         jda.addEventListener(new weather());
         jda.addEventListener(new voiceClick());
         jda.addEventListener(new grouper());

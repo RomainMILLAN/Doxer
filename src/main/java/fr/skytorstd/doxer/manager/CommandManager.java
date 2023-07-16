@@ -26,7 +26,6 @@ public class CommandManager {
         commandData.add(getDiscordSecuritySecurityCommand());
         commandData.add(getDiscordSecurityConfirmCommand());
         commandData.add(getPollExclamerPollCommand());
-        commandData.add(getMessageMoverMoveCommand());
         commandData.add(getWeatherWeatherCommand());
         commandData.add(getVoiceClickVoiceClickCommand());
         commandData.add(getGrouperGrouperCommand());

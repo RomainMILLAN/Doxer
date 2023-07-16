@@ -5,8 +5,11 @@ import fr.skytorstd.doxer.objects.Plugin;
 import fr.skytorstd.doxer.states.messages.command.HelperMessage;
 import fr.skytorstd.doxer.states.messages.plugin.DiscordModeratorMessages;
 import fr.skytorstd.doxer.states.messages.plugin.DiscordSecurityMessages;
+import fr.skytorstd.doxer.states.messages.plugin.PluginMessageInterface;
+import fr.skytorstd.doxer.states.messages.plugin.PollExclamerMessages;
 import fr.skytorstd.doxer.states.plugins.DiscordModeratorStates;
 import fr.skytorstd.doxer.states.plugins.DiscordSecurityStates;
+import fr.skytorstd.doxer.states.plugins.PollExclamerStates;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
@@ -27,6 +30,7 @@ public class CommandManager {
         commandData.add(getDiscordModeratorProfileCommand());
         commandData.add(getDiscordSecuritySecurityCommand());
         commandData.add(getDiscordSecurityConfirmCommand());
+        commandData.add(getPollExclamerPollCommand());
 
         return commandData;
     }
@@ -136,5 +140,26 @@ public class CommandManager {
                 DiscordSecurityStates.PLUGIN_COMMAND_CONFIRM_PREFIX.getState(),
                 DiscordSecurityMessages.PLUGIN_COMMAND_CONFIRM_DESCRIPTION.getMessage()
         ).addOptions(user, group, nickname);
+    }
+
+    private static SlashCommandData getPollExclamerPollCommand() {
+        OptionData question = new OptionData(
+                OptionType.STRING,
+                PollExclamerStates.PLUGIN_OPTION_POLL_QUESTION_NAME.getState(),
+                PollExclamerMessages.PLUGIN_OPTION_QUESTION_DESCRIPTION.getMessage()
+        )
+                .setRequired(true);
+
+        OptionData reponse =  new OptionData(
+                OptionType.STRING,
+                PollExclamerStates.PLUGIN_OPTION_POLL_ANSWER_NAME.getState(),
+                PollExclamerMessages.PLUGIN_OPTION_ANSWER_DESCRIPTION.getMessage()
+        )
+                .setRequired(true);
+
+        return Commands.slash(
+                PollExclamerStates.PLUGIN_COMMAND_POLL_PREFIX.getState(),
+                PollExclamerMessages.PLUGIN_COMMAND_POLL_DESCRIPTION.getMessage()
+        ).addOptions(question, reponse);
     }
 }

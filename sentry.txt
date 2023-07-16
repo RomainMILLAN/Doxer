@@ -43,3 +43,6 @@
 [16/07/2023 07:41:50] wabezeter - BUT Sète - Development/DiscordSecurity | Confirmation du compte <@1108718319860715561>
 [16/07/2023 07:45:44] wabezeter - BUT Sète - Development/DiscordSecurity | Permission incorrecte (`Sudo`)
 [16/07/2023 07:45:49] wabezeter - BUT Sète - Development/DiscordSecurity | Permission incorrecte (`Sudo`)
+[16/07/2023 08:15:14] wabezeter - BUT Sète - Development/PLUGIN_NAME | Un sondage crée (`test de question`)
+[16/07/2023 08:15:33] wabezeter - BUT Sète - Development/PLUGIN_NAME | Un sondage crée (`Test`)
+[16/07/2023 08:17:12] wabezeter - BUT Sète - Development/PLUGIN_NAME | Un sondage crée (`Test de question`)

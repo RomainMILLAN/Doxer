@@ -5,6 +5,7 @@ import fr.skytorstd.doxer.states.messages.IconMessages;
 import fr.skytorstd.doxer.states.messages.plugin.DiscordSecurityMessages;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Role;
 
 import java.awt.*;
 

@@ -1,6 +1,7 @@
 package fr.skytorstd.doxer.commands.plugins;
 
 import fr.skytorstd.doxer.App;
+import fr.skytorstd.doxer.manager.ConsoleManager;
 import fr.skytorstd.doxer.manager.MemberPermission;
 import fr.skytorstd.doxer.manager.Sentry;
 import fr.skytorstd.doxer.manager.embedCrafter.ErrorCrafter;
@@ -16,6 +17,8 @@ import fr.skytorstd.doxer.states.plugins.DiscordModeratorStates;
 import fr.skytorstd.doxer.states.plugins.DiscordSecurityStates;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
+import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 
 import java.util.ArrayList;
@@ -176,5 +179,39 @@ public class discordSecurity extends pluginSlashInterface {
                 event.getMember(),
                 event.getGuild()
         );
+    }
+
+    @Override
+    public void onGuildMemberJoin(GuildMemberJoinEvent event) {
+
+        if(App.getConfiguration("ST_SECURITY").equals("TRUE")) {
+            TextChannel securityChannel = event.getGuild().getTextChannelById(App.getConfiguration("TC_SECURITY"));
+
+            Role staff = event.getGuild().getRoleById(App.getConfiguration("R_STAFF"));
+            securityChannel.sendMessage(
+                    String.format(
+                            DiscordSecurityMessages.WELCOME_SECURITY_MESSAGE.getMessage(),
+                            event.getMember().getAsMention(),
+                            staff.getAsMention()
+                    )
+            ).queue();
+
+
+        }else {
+            Role defaultRole = event.getGuild().getRoleById(App.getConfiguration("R_SECURITY_DEFAULT_GROUP"));
+            event.getGuild().addRoleToMember(event.getMember(), defaultRole).queue();
+
+            Sentry.getInstance().toLog(
+                    DiscordSecurityStates.PLUGIN_NAME.getState(),
+                    String.format(
+                            DiscordSecurityMessages.SENTRY_SECURITY_FALSE_MEMBER_JOIN.getMessage(),
+                            defaultRole.getAsMention()
+                    ),
+                    LogState.SUCCESSFUL,
+                    event.getMember(),
+                    event.getGuild()
+            );
+        }
+
     }
 }

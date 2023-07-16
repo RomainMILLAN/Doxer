@@ -18,8 +18,10 @@ public enum DiscordSecurityMessages {
     SECURITY_STATE("Le status de la sécurité est définie sur `%s`"),
     EMBED_TITLE(IconMessages.WRENCH.getIcon() + " **" + DiscordSecurityStates.PLUGIN_NAME.getState() + "**"),
     CONFIRM_MESSAGE("%s, viens de se faire confirmer par %s"),
+    WELCOME_SECURITY_MESSAGE("Bienvenue %s, attends qu'un %s arrive pour te confirmer et avoir accès à l'entièreté du serveur !"),
 
     SENTRY_CONFIRM("Confirmation du compte %s"),
+    SENTRY_SECURITY_FALSE_MEMBER_JOIN("Un nouveau membre vient d'arriver le rôle %s vient de lui être ajoutée automatiquement."),
     MESSAGE("MESSAGE");
 
     private final String message;

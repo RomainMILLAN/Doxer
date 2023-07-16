@@ -66,3 +66,4 @@
 [16/07/2023 11:40:07] wabezeter - BUT Sète - Development/Grouper | Groupe `test3` crée avec succès
 [16/07/2023 11:40:43] wabezeter - BUT Sète - Development/Grouper | Groupe crée (`test4`)
 [16/07/2023 11:41:27] wabezeter - BUT Sète - Development/Grouper | Groupe crée (`test5`)
+[16/07/2023 13:02:04] wabezeter - BUT Sète - Development/DiscordSecurity | Confirmation du compte <@690098850245115935>

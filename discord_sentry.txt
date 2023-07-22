@@ -1,0 +1,5 @@
+
+[22/07/2023 09:06:13] wabezeter - BUT Sète - Development/Message | <#1128200834195406968>
+ > test
+[22/07/2023 09:06:20] wabezeter - BUT Sète - Development/Voice Join |  -> VoiceChannel:🔉 • Ajoutez un channel(id=1128200834598043677)
+[22/07/2023 09:06:26] wabezeter - BUT Sète - Development/Voice Quit |  <- VoiceChannel:🔉 • Ajoutez un channel(id=1128200834598043677)

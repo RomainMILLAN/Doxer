@@ -82,6 +82,7 @@ public class App
         jda.addEventListener(new voiceClick());
         jda.addEventListener(new grouper());
         jda.addEventListener(new helper());
+        jda.addEventListener(new discordSentry());
 
         jda.getGuildById(App.guildId).updateCommands().addCommands(CommandManager.updateSlashCommands()).queue();
     }

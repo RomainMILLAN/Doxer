@@ -13,7 +13,7 @@ public class SentryCrafter extends EmbedCrafterBase {
     public static EmbedBuilder craftSentryEmbed(String title, String description, LogState logState, Member member) {
         EmbedBuilder embed = craftEmbedBase();
 
-        embed.setTitle(IconMessages.DOCUMENT_WRITING.getIcon() + "**DISCORD SENTRY/" + title + "**")
+        embed.setTitle(IconMessages.DOCUMENT_WRITING.getIcon() + "**SENTRY/" + title + "**")
                 .setColor(colorSentry)
                 .setDescription(title + " - " + member.getAsMention() + "\n > " + logState.getEmojiMessage() + " " + description);
 

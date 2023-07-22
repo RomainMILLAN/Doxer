@@ -25,7 +25,7 @@ public enum HelperMessage {
 
     SENTRY_PLUGIN_COMMAND_ACTIVATE("Visualisation des commandes de "),
 
-    SENTRY_PLUGIN_COMMAND_ACTIVATE_PLUGIN_NOT_FOUND("Impossible de visualisation les commandes demandées ");
+    SENTRY_PLUGIN_COMMAND_ACTIVATE_PLUGIN_NOT_FOUND("Impossible de visualiser les commandes demandées ");
 
     private final String message;
 

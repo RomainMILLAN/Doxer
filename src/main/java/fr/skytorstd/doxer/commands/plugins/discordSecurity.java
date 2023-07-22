@@ -162,7 +162,7 @@ public class discordSecurity extends pluginSlashInterface {
                     DiscordSecurityStates.PLUGIN_OPTION_CONFIRM_NICKNAME_NAME.getState()
             ).getAsString();
 
-            event.getGuild().modifyNickname(member, nickname).queue();
+            member.modifyNickname(nickname).queue();
         }
 
         event.replyEmbeds(

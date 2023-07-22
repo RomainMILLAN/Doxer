@@ -7,7 +7,7 @@ public enum DiscordSecurityStates {
 
     PLUGIN_COMMAND_CONFIRM_PREFIX("confirm"),
     PLUGIN_OPTION_CONFIRM_USER_NAME("utilisateur"),
-    PLUGIN_OPTION_CONFIRM_GROUP_NAME("group"),
+    PLUGIN_OPTION_CONFIRM_GROUP_NAME("groupe"),
     PLUGIN_OPTION_CONFIRM_NICKNAME_NAME("nickname");
 
     private final String state;

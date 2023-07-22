@@ -11,23 +11,16 @@ public class ConsoleCommand {
     public static void consoleCommand() throws InterruptedException {
         while(true){
             ConsoleManager.getInstance().toConsole(ConsoleMessages.CC_INFO_STOP.getMessage(), ConsoleState.CONSOLE);
-            ConsoleManager.getInstance().toConsole(ConsoleMessages.CC_INFO_RELOAD.getMessage(), ConsoleState.CONSOLE);
 
             try (Scanner scanner = new Scanner(System.in)) {
-                String consoleCommand = scanner.nextLine();
+                while(scanner.hasNextLine()){
+                    String consoleCommand = scanner.nextLine();
 
-                if(consoleCommand.equals("!stop")){
-                    ConsoleManager.getInstance().toConsole(ConsoleMessages.CC_STOP.getMessage(), ConsoleState.CONSOLE);
-
-                    App.getJda().shutdown();
-                    System.exit(1);
-                }else if(consoleCommand.equals("!reload")){
-                    ConsoleManager.getInstance().toConsole(ConsoleMessages.CC_RELOAD.getMessage(), ConsoleState.CONSOLE);
-
-                    App.getJda().shutdown();
-                    App.runJdaBot();
-                }else {
-                    ConsoleManager.getInstance().toConsole(ConsoleMessages.CC_ERROR_COMMAND.getMessage(), ConsoleState.ERROR);
+                    if(consoleCommand.equals("!stop")){
+                        System.exit(0);
+                    }else {
+                        ConsoleManager.getInstance().toConsole(ConsoleMessages.CC_ERROR_COMMAND.getMessage(), ConsoleState.ERROR);
+                    }
                 }
             }
 

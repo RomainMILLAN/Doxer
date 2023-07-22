@@ -3,11 +3,13 @@ package fr.skytorstd.doxer;
 import fr.skytorstd.doxer.commands.plugins.*;
 import fr.skytorstd.doxer.commands.helper;
 import fr.skytorstd.doxer.manager.*;
+import fr.skytorstd.doxer.manager.embedCrafter.UploadCrafter;
 import fr.skytorstd.doxer.objects.Plugin;
 import fr.skytorstd.doxer.states.ConsoleState;
 import fr.skytorstd.doxer.states.EnvironementState;
 import fr.skytorstd.doxer.states.messages.application.BotMessages;
 import fr.skytorstd.doxer.states.messages.application.SystemMessages;
+import fr.skytorstd.doxer.states.messages.application.UploadMessages;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
@@ -47,11 +49,14 @@ public class App
      * @throws InterruptedException
      */
     public static void runJdaBot() throws InterruptedException {
+        Runtime.getRuntime().addShutdownHook(new Thread(App::stop));
+
         App.jda = JDABuilder.createDefault(App.configuration.getConfiguration("BOT_TOKEN"))
                 .setIdle(true)
                 .enableCache(CacheFlag.ACTIVITY, CacheFlag.VOICE_STATE)
                 .setActivity(Activity.watching(BotMessages.ACTIVITY_PLAYING_BOT.getMessage()))
                 .enableIntents(GatewayIntent.GUILD_MEMBERS, GatewayIntent.MESSAGE_CONTENT, GatewayIntent.GUILD_VOICE_STATES, GatewayIntent.GUILD_PRESENCES)
+                .setEnableShutdownHook(true)
                 .build();
 
         App.jda.awaitStatus(JDA.Status.INITIALIZING);
@@ -62,6 +67,7 @@ public class App
 
         App.jda.awaitReady();
         ConsoleManager.getInstance().toConsole(BotMessages.JDA_BOT_READY.getMessage(), ConsoleState.INFO);
+        UploadManager.sendConnectedMessage();
 
         App.updateCommands();
 
@@ -78,6 +84,10 @@ public class App
         jda.addEventListener(new helper());
 
         jda.getGuildById(App.guildId).updateCommands().addCommands(CommandManager.updateSlashCommands()).queue();
+    }
+
+    private static void stop() {
+        UploadManager.sendDisconnectmessage();
     }
 
     public static String getConfiguration(String configurationKey) {

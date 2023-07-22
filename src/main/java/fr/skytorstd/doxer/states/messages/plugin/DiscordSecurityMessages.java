@@ -5,7 +5,7 @@ import fr.skytorstd.doxer.states.plugins.DiscordSecurityStates;
 
 public enum DiscordSecurityMessages {
 
-    PLUGIN_DESCRIPTION("Plugin permetant de filtrer les personnes qui rentre sur votre serveur discord"),
+    PLUGIN_DESCRIPTION("Plugin permetant de filtrer les personnes qui rentrent sur votre serveur discord"),
 
     PLUGIN_COMMAND_SECURITY("/security"),
     PLUGIN_COMMAND_SECURITY_DESCRIPTION("Permet de désigner le groupe par défaut et visualiser le status de la sécurité"),

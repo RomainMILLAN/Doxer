@@ -5,7 +5,7 @@ public enum DiscordModeratorMessages {
 
     PLUGIN_COMMAND_WARN_NAME("/warn <action> <utilisateur>"),
     PLUGIN_COMMAND_WARN_DESCRIPTION("Voir la liste des warns d'un utilisateur"),
-    PLUGIN_OPTION_WARN_USER_DESCRIPTION("L'utilisateur dont vous voulez voir ces warns"),
+    PLUGIN_OPTION_WARN_USER_DESCRIPTION("L'utilisateur dont vous voulez voir les warns"),
     PLUGIN_OPTION_WARN_ACTION_DESCRIPTION("Action à effectuer"),
     PLUGIN_CHOICE_WARN_SHOW_DESCRIPTION("Lister les warns d'un utilisateur"),
     PLUGIN_CHOICE_WARN_ADD_DESCRIPTION("Ajouter un warn à l'utilisateur"),
@@ -19,30 +19,30 @@ public enum DiscordModeratorMessages {
 
 
     PLUGIN_COMMAND_PROFILE_NAME("/profil <utilisateur>"),
-    PLUGIN_COMMAND_PROFILE_DESCRIPTION("Permet de voir le profil utilisateur"),
+    PLUGIN_COMMAND_PROFILE_DESCRIPTION("Permet de voir le profil dde l'utilisateur"),
     PLUGIN_OPTION_PROFILE_USER_DESCRIPTION("Utilisateur à consulter"),
 
-    WARN_NONE("Aucun warns pour cette utilisateur"),
+    WARN_NONE("Aucun warns pour cet utilisateur"),
     WARN_ADD("Warn ajouté à %s pour `%s`"),
     WARN_REMOVE("Warn supprimé à %s (`%s`)"),
-    WARN_NOT_FOUND("Le warn avec l'identifiant `%s` n'as pas était trouvé"),
+    WARN_NOT_FOUND("Le warn avec l'identifiant `%s` n'as pas été trouvé"),
 
     PROFILE_TITLE("%s **%s**"),
     PROFILE_DESCRIPTION("Profile de %s"),
     PROFILE_IDENTIFIANT("Identifiant"),
-    PROFILE_WARNS("Nombre de warn"),
+    PROFILE_WARNS("Nombre de warns"),
     PROFILE_NAME("Effective name"),
     PROFILE_STATUS("Status utilisateur"),
-    PROFILE_CREATED_AT("Création du profile"),
-    PROFILE_USER_NOT_FOUND("Utilisateur non reconnue"),
+    PROFILE_CREATED_AT("Création du profil"),
+    PROFILE_USER_NOT_FOUND("Utilisateur non reconnu"),
 
 
     SENTRY_WARN_ADD("Warn ajouté (%s -> `%s`)"),
     SENTRY_WARN_REMOVE("Warn supprimé (%s -> `%s`)"),
-    SENTRY_WARN_NOT_FOUND("Warn avec l'identifiant `%s` n'as pas était trouvé dans la BD"),
+    SENTRY_WARN_NOT_FOUND("Warn avec l'identifiant `%s` n'as pas été trouvé dans la BD"),
     SENTRY_WARN_LIST_SUCCESS("Affichage de la liste des warns de %s"),
-    SENTRY_PROFILE_NOT_FOUND("Utilisateur non trouvée pour lecture (`%s`)"),
-    SENTRY_PROFILE_SEE("Lecture du profile de %s");
+    SENTRY_PROFILE_NOT_FOUND("Utilisateur non trouvé pour lecture (`%s`)"),
+    SENTRY_PROFILE_SEE("Lecture du profil de %s");
 
     private final String message;
 

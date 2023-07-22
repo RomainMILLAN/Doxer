@@ -9,10 +9,10 @@ public enum MessageMoverMessages {
     PLUGIN_OPTION_MOVE_MESSAGE_ID_DESCRIPTION("Identifiant du message à déplacer"),
     PLUGIN_OPTION_MOVE_CHANNEL_ID_DESCRIPTION("Channel ou déplacer le message"),
 
-    ERROR_CHANNEL_NOT_FOUND("Channel non trouvée (`%s`)"),
+    ERROR_CHANNEL_NOT_FOUND("Channel non trouvé (`%s`)"),
     MESSAGE_MOVE("Message déplacé vers %s"),
 
-    SENTRY_CHANNEL_NOT_FOUND("Channel non trouvée (`%s`)"),
+    SENTRY_CHANNEL_NOT_FOUND("Channel non trouvé (`%s`)"),
     SENTRY_MESSAGE_MOVE("Message déplacé vers (`%s` -> %s)"),
     MESSAGE("MESSAGE");
 

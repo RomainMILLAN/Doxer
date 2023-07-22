@@ -2,11 +2,11 @@ package fr.skytorstd.doxer.states.messages.plugin;
 
 public enum VoiceClickMessages {
 
-    PLUGIN_DESCRIPTION("Plugin permettant de crée des channels vocaux"),
+    PLUGIN_DESCRIPTION("Plugin permettant de créer des channels vocaux"),
 
     PLUGIN_COMMAND_VOICECLICK("/voiceclick <list/add/remove>"),
     PLUGIN_COMMAND_VOICECLICK_DESCRIPTION("Commande permettant de gérer le plugin VoiceClick"),
-    PLUGIN_OPTION_VOICECLICK_ACTION_DESCRIPTION("Action à effectuée"),
+    PLUGIN_OPTION_VOICECLICK_ACTION_DESCRIPTION("Action à effectuer"),
 
     PLUGIN_OPTION_VOICECLICK_CHOICE_LIST_DESCRIPTION("Liste des channels voiceclick"),
     PLUGIN_OPTION_VOICECLICK_CHOICE_ADD_DESCRIPTION("Ajouter un channel voicelick"),
@@ -22,9 +22,9 @@ public enum VoiceClickMessages {
 
     NO_VOICE_CLICK_CHANNELS("Aucun channel voiceclick"),
     VOICE_CLICK_ADD("Channel Voice Click ajouté %s"),
-    VOICE_CLICK_REMOVE("Channel Voice Click supprimée `%s`"),
-    VOICE_CLICK_CHANNEL_NOT_FOUND("Channel non trouvée `%s`"),
-    VOICE_CLICK_NOT_FOUND("Voice Click non trouvée `%s`"),
+    VOICE_CLICK_REMOVE("Channel Voice Click supprimé `%s`"),
+    VOICE_CLICK_CHANNEL_NOT_FOUND("Channel non trouvé `%s`"),
+    VOICE_CLICK_NOT_FOUND("Voice Click non trouvé `%s`"),
     SENTRY_VOICECLICK_LIST("Lecture de la liste des channels voiceclicks"),
 
     MESSAGE("MESSAGE");

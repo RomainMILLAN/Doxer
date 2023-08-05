@@ -1,6 +1,5 @@
 package fr.skytorstd.doxer.manager.embedCrafter;
 
-import fr.skytorstd.doxer.states.LogState;
 import fr.skytorstd.doxer.states.messages.IconMessages;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;

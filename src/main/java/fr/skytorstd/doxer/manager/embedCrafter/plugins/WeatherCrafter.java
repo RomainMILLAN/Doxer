@@ -3,9 +3,7 @@ package fr.skytorstd.doxer.manager.embedCrafter.plugins;
 import com.github.prominence.openweathermap.api.model.weather.Weather;
 import fr.skytorstd.doxer.manager.embedCrafter.EmbedCrafterBase;
 import fr.skytorstd.doxer.states.messages.IconMessages;
-import fr.skytorstd.doxer.states.messages.plugin.PollExclamerMessages;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.Member;
 
 import java.awt.*;
 

@@ -6,8 +6,6 @@ import fr.skytorstd.doxer.objects.Plugin;
 import fr.skytorstd.doxer.objects.pluginInterface;
 import fr.skytorstd.doxer.states.messages.plugin.DiscordSentryMessages;
 import fr.skytorstd.doxer.states.plugins.DiscordSentryStates;
-import net.dv8tion.jda.api.events.channel.ChannelCreateEvent;
-import net.dv8tion.jda.api.events.guild.GuildLeaveEvent;
 import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.api.events.guild.member.update.GuildMemberUpdateNicknameEvent;
 import net.dv8tion.jda.api.events.guild.voice.GuildVoiceDeafenEvent;
@@ -15,8 +13,6 @@ import net.dv8tion.jda.api.events.guild.voice.GuildVoiceMuteEvent;
 import net.dv8tion.jda.api.events.guild.voice.GuildVoiceUpdateEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.MessageUpdateEvent;
-import net.dv8tion.jda.api.events.role.RoleCreateEvent;
-
 import java.util.ArrayList;
 
 public class discordSentry extends pluginInterface {

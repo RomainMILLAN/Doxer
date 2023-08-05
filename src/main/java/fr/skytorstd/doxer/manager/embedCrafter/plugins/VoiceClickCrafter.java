@@ -1,10 +1,8 @@
 package fr.skytorstd.doxer.manager.embedCrafter.plugins;
 
 import fr.skytorstd.doxer.manager.embedCrafter.EmbedCrafterBase;
-import fr.skytorstd.doxer.objects.Plugin;
 import fr.skytorstd.doxer.objects.plugins.VoiceClick;
 import fr.skytorstd.doxer.states.messages.IconMessages;
-import fr.skytorstd.doxer.states.messages.command.HelperMessage;
 import fr.skytorstd.doxer.states.messages.plugin.VoiceClickMessages;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.channel.Channel;

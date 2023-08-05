@@ -1,7 +1,6 @@
 package fr.skytorstd.doxer.commands.plugins;
 
 import fr.skytorstd.doxer.App;
-import fr.skytorstd.doxer.manager.ConsoleManager;
 import fr.skytorstd.doxer.manager.MemberPermission;
 import fr.skytorstd.doxer.manager.Sentry;
 import fr.skytorstd.doxer.manager.embedCrafter.ErrorCrafter;
@@ -51,13 +50,13 @@ public class discordSecurity extends pluginSlashInterface {
 
         if(event.getName().equalsIgnoreCase(DiscordSecurityStates.PLUGIN_COMMAND_SECURITY_PREFIX.getState())
         || event.getName().equalsIgnoreCase(DiscordSecurityStates.PLUGIN_COMMAND_CONFIRM_PREFIX.getState())){
-            if(!MemberPermission.getInstance().isOpMember(event.getMember())){
+            if(!MemberPermission.getInstance().isStaffMember(event.getMember())){
                 event.replyEmbeds(
                                 ErrorCrafter.craftErrorPermission(
                                         DiscordSecurityStates.PLUGIN_NAME.getState(),
                                         event.getMember(),
                                         event.getCommandString(),
-                                        MemberPermissionStates.OP
+                                        MemberPermissionStates.STAFF
                                 ).build()
                         )
                         .setEphemeral(true)

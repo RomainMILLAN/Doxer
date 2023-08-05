@@ -2,10 +2,8 @@ package fr.skytorstd.doxer.manager;
 
 import fr.skytorstd.doxer.App;
 import fr.skytorstd.doxer.manager.embedCrafter.DiscordSentryCrafter;
-import fr.skytorstd.doxer.manager.embedCrafter.SentryCrafter;
 import fr.skytorstd.doxer.states.ConsoleColors;
 import fr.skytorstd.doxer.states.ConsoleState;
-import fr.skytorstd.doxer.states.LogState;
 import fr.skytorstd.doxer.states.plugins.DiscordSentryStates;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;

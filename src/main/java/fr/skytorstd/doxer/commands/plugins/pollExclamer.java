@@ -8,7 +8,6 @@ import fr.skytorstd.doxer.objects.pluginSlashInterface;
 import fr.skytorstd.doxer.states.LogState;
 import fr.skytorstd.doxer.states.QueueAfterTimes;
 import fr.skytorstd.doxer.states.messages.plugin.PollExclamerMessages;
-import fr.skytorstd.doxer.states.plugins.DiscordSecurityStates;
 import fr.skytorstd.doxer.states.plugins.PollExclamerStates;
 import net.dv8tion.jda.api.entities.emoji.Emoji;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;

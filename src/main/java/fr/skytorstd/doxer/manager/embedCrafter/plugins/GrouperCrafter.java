@@ -1,6 +1,5 @@
 package fr.skytorstd.doxer.manager.embedCrafter.plugins;
 
-import com.github.prominence.openweathermap.api.model.weather.Weather;
 import fr.skytorstd.doxer.manager.embedCrafter.EmbedCrafterBase;
 import fr.skytorstd.doxer.states.messages.IconMessages;
 import fr.skytorstd.doxer.states.messages.plugin.GrouperMessages;

@@ -1,6 +1,5 @@
 package fr.skytorstd.doxer.manager;
 
-import fr.skytorstd.doxer.App;
 import fr.skytorstd.doxer.states.ConsoleState;
 import fr.skytorstd.doxer.states.messages.application.ConsoleMessages;
 

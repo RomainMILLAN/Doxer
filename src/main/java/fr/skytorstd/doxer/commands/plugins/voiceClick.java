@@ -321,7 +321,7 @@ public class voiceClick extends pluginSlashInterface {
                 EnumSet<Permission> allow = EnumSet.of(Permission.MANAGE_CHANNEL, Permission.PRIORITY_SPEAKER,
                         Permission.VOICE_MUTE_OTHERS, Permission.VOICE_DEAF_OTHERS, Permission.VOICE_SPEAK);
                 EnumSet<Permission> deny = EnumSet.of(Permission.BAN_MEMBERS, Permission.KICK_MEMBERS);
-                event.getChannelJoined().getParentCategory().createVoiceChannel(vcc.getVc_name() + event.getMember().getEffectiveName()).addMemberPermissionOverride(Long.parseLong(event.getMember().getId()), allow, deny).queue(voiceChannel -> {
+                event.getChannelJoined().getParentCategory().createVoiceChannel(vcc.getVc_name() + " " + event.getMember().getEffectiveName()).addMemberPermissionOverride(Long.parseLong(event.getMember().getId()), allow, deny).queue(voiceChannel -> {
                     ChannelVoiceClickDatabase.addChannelVoiceClick(voiceChannel.getId());
 
                     event.getGuild().moveVoiceMember(event.getMember(), event.getGuild().getVoiceChannelById(voiceChannel.getId())).queue();

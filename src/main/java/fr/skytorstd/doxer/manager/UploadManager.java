@@ -2,7 +2,6 @@ package fr.skytorstd.doxer.manager;
 
 import fr.skytorstd.doxer.App;
 import fr.skytorstd.doxer.manager.embedCrafter.UploadCrafter;
-import fr.skytorstd.doxer.states.messages.application.UploadMessages;
 
 public class UploadManager {
 
@@ -21,24 +20,14 @@ public class UploadManager {
                 )
                 .queue();
 
-        SignalApi.sendSignalPersonnalMessage(
-                String.format(
-                        UploadMessages.SIGNAL_CONNECTED.getMessage(),
-                        App.getJda().getSelfUser().getName()
-                )
-        );
+        DiscordWebhookApi.sendConnectedNotification();;
     }
     public static void sendDisconnectmessage() {
         if(!App.getConfiguration("APP_ENV").equals("PROD") && !App.getConfiguration("APP_ENV").equals("STAGING")){
             return;
         }
 
-        SignalApi.sendSignalPersonnalMessage(
-                String.format(
-                        UploadMessages.SIGNAL_DISCONNECTED.getMessage(),
-                        App.getJda().getSelfUser().getName()
-                )
-        );
+        DiscordWebhookApi.sendDisconnectedNotification();
     }
 
 }

@@ -29,6 +29,7 @@ public class CommandManager {
         commandData.add(getWeatherWeatherCommand());
         commandData.add(getVoiceClickVoiceClickCommand());
         commandData.add(getGrouperGrouperCommand());
+        commandData.add(getMessageMoverMoveCommand());
 
         return commandData;
     }
